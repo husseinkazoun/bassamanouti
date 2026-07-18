@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bassam Anouti — Iconic</title>
-  <meta name="description" content="Portfolio of Bassam Anouti, multidisciplinary artist, art historian, and educator. Iconic — a large fresque featuring legendary, folkloric, mythical and historical iconic characters.">
+  <meta name="description" content="Bassam Anouti — multidisciplinary artist, art historian, educator and digital image-maker. Iconic: a fresco of legendary, folkloric, mythical and historical figures who transgressed the boundary between good and evil.">
+  <meta name="theme-color" content="#14110D">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cinzel+Decorative:wght@400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -27,16 +28,23 @@
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav__hamburger" aria-label="Menu">
+  <button class="nav__hamburger" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- ======================== HERO ======================== -->
 <section class="hero">
-  <h1 class="hero__title display-font">Bassam Anouti</h1>
-  <p class="hero__subtitle">Artist &middot; Historian &middot; Educator</p>
-  <p class="hero__year">Beirut &middot; Paris &middot; Rome</p>
+  <div class="hero__media">
+    <img src="images/history/semiramis-and-ninyas.jpg" alt="Semiramis and Ninyas — from the Iconic series by Bassam Anouti">
+  </div>
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Iconic — a fresco of transgression</p>
+    <h1 class="hero__title">Bassam<br>Anouti</h1>
+    <p class="hero__roles">Artist &middot; Art Historian &middot; Digital Image-Maker</p>
+    <p class="hero__places">Beirut &middot; Paris &middot; Rome</p>
+    <a href="#gallery" class="hero__cta">Enter the series</a>
+  </div>
   <div class="hero__scroll">
     <span>Scroll</span>
     <div class="hero__scroll-line"></div>
@@ -45,22 +53,21 @@
 
 <!-- ======================== ABOUT ======================== -->
 <section id="about" class="section">
-  <div class="about reveal">
-    <div class="about__col">
+  <div class="columns">
+    <div class="col reveal">
       <p class="section__label">Bio</p>
-      <h3>About the Artist</h3>
-      <p>Bassam Anouti is a Beirut-born multidisciplinary artist, art historian, and educator with a remarkably diverse academic foundation. He pursued higher education across clinical psychology, French literature, art history, fine arts, and design at the Lebanese University and later at Paris I Panth&eacute;on-Sorbonne. He earned an M.Phil. from the Universit&eacute; Paris-Sorbonne (Paris IV) and trained in a special art program at the Louvre Museum in Paris.</p>
-      <p>A polyglot who lives between Beirut, Paris, and Rome, Anouti belongs to hybrid cultures, bridging East and West. He grew up in the chaos of the Lebanese Civil War and therefore projects a cerebral and symbolic pictorial work, in opposition to the socio-political and human disorder he experienced.</p>
-      <p>His blend of advanced humanities education and hands-on teaching experience has made Anouti an artist-intellectual whose work is informed by deep historical and cultural knowledge. He has held teaching positions at AUST, Espace Fann, and currently serves as instructor at Majal Design School.</p>
-      <p>Anouti's artistic practices stand at the intersection of pictorial traditions and contemporary practices, combining photography, digital painting and traditional mixed-media techniques.</p>
+      <p class="lead">At the intersection of classical visual culture and contemporary digital practice.</p>
+      <p>Bassam Anouti is a multidisciplinary artist, art historian, educator and digital image-maker whose work is shaped by a broad academic and creative formation across art history, French literature, clinical psychology, fine arts, fashion design, jewelry design and graphic design.</p>
+      <p>His practice brings together research, image-making and visual storytelling. Working across photography, digital painting, compositing and mixed media, Anouti develops images that are both constructed and narrative. His work is grounded in historical, anthropological, literary and mythological research, without being limited to illustration. Each image is conceived as a visual situation in which characters, symbols and cultural references enter into tension.</p>
+      <p>Narration plays a central role in his artistic language. The figures and scenes he constructs establish a dialogue with the viewer, opening a space of interpretation rather than delivering a fixed meaning. His images often operate through confrontation, ambiguity and psychological intensity, allowing the spectator to participate in the story being staged.</p>
+      <p>Alongside his artistic practice, Anouti has developed a strong pedagogical practice in the visual arts, with a focus on contemporary image-making, digital tools and creative methodologies. He has also worked with UNDP as a trainer and mentor, contributing to programs dedicated to visual development and digital creation.</p>
     </div>
-    <div class="about__col">
+    <div class="col reveal d1">
       <p class="section__label">Philosophy</p>
       <h3>Order Against Chaos</h3>
-      <p>Having come of age during the Lebanese Civil War, Anouti witnessed chaos and disorder firsthand. His response has been to create art that is <em>c&eacute;r&eacute;brale, ordonn&eacute;e et r&eacute;fl&eacute;chie</em> &mdash; cerebral, ordered, and reflective &mdash; a direct counter-narrative to the socio-political and human disorder he lived through.</p>
-      <p>Drawing on principles of psychology, his art-making functions as an intellectual exercise: by imposing meticulous structure, symmetry, and thoughtfulness, he symbolically mends the fractures of a chaotic world. His visual compositions are highly deliberate and concept-driven, a direct inverse of the randomness of war-torn reality.</p>
-      <p>History and anthropology underlie his creative process. He conducts extensive research as a <em>socle</em> (foundation) for his artwork, weaving ancient lore and legend into contemporary digital form. His art reflects a dialogue between Eastern and Western iconography &mdash; combining Babylonian or Levantine mythologies with European art techniques, juxtaposing the ancient with the modern.</p>
-      <p>In his works, Anouti assumes that his target audience possesses artistic and literary appreciation, and boasts a historical understanding of Eastern and Western cultures, as well as their symbolism.</p>
+      <p>Having come of age in the chaos of the Lebanese Civil War, Anouti witnessed disorder firsthand. His response has been to make work that is <em>c&eacute;r&eacute;brale, ordonn&eacute;e et r&eacute;fl&eacute;chie</em> &mdash; cerebral, ordered, and reflective &mdash; a deliberate counter-narrative to the socio-political and human disorder he lived through.</p>
+      <p>Drawing on principles of psychology, his art-making functions as an intellectual exercise: by imposing meticulous structure, symmetry, and thought, he symbolically mends the fractures of a broken world. His compositions are concept-driven and highly deliberate, the inverse of the randomness of a war-torn reality.</p>
+      <p>His art stages a dialogue between Eastern and Western iconography &mdash; weaving Babylonian and Levantine mythologies through European technique, juxtaposing the ancient with the modern. Anouti assumes an audience with artistic and literary appreciation, and a historical understanding of Eastern and Western cultures, as well as their symbolism.</p>
     </div>
   </div>
 </section>
@@ -69,384 +76,244 @@
 <section id="process" class="section">
   <p class="section__label reveal">Method</p>
   <h2 class="section__title reveal">Process</h2>
-  <div class="about reveal">
-    <div class="about__col">
+  <div class="columns">
+    <div class="col reveal">
       <h3>From Research to Canvas</h3>
       <p>Each work begins with extensive anthropological and historical research into the chosen iconic figure &mdash; their mythology, cultural context, and symbolic resonance across civilizations.</p>
-      <p>The chosen figures are then staged through photography, where models from the artist's entourage pose in carefully assembled costumes. Folk and historical costumes, fabrics, and colors are all elements chosen for their universal symbolism. Photographs are taken in both Lebanon and France.</p>
-      <p>These photographs become the foundation for digital painting and compositing using multiple graphics software. The results are then printed as a single artwork using ultraviolet light before being reworked using traditional fine art techniques by the artist.</p>
+      <p>The figures are then staged through photography, where models from the artist's entourage pose in carefully assembled costumes. Folk and historical dress, fabrics, and colors are chosen for their universal symbolism. Photographs are taken in both Lebanon and France.</p>
+      <p>These photographs become the foundation for digital painting and compositing across several graphics programs. The result is printed as a single artwork using ultraviolet light, then reworked by hand with traditional fine-art techniques.</p>
     </div>
-    <div class="about__col">
+    <div class="col reveal d1">
       <h3>Tools &amp; Media</h3>
-      <p>Anouti works across a range of digital and traditional tools: Adobe Photoshop, Procreate, ArtStudio, and Adobe Illustrator on iPad form the core of his digital practice. These are complemented by traditional painting techniques &mdash; acrylic, ink, and gold leaf &mdash; applied in the final stages of each piece.</p>
-      <p>The resulting works are truly mixed-media in the broadest sense: photographic realism alongside stylized digital illustration, typographic and geometric design motifs, with colors, forms, and layouts carefully balanced with a graphic designer's eye for composition.</p>
-      <p>There is a noticeable influence of pop art and collage &mdash; cut-out figures of historical personas re-contextualized in new settings &mdash; alongside the visual languages of antiquity: ancient Mesopotamian symbols, classical sculptures, and calligraphic scripts subtly embedded in digital canvases.</p>
+      <p>Anouti works across digital and traditional tools: Adobe Photoshop, Procreate, ArtStudio, and Adobe Illustrator on iPad form the core of his digital practice, complemented by acrylic, ink, and gold leaf applied in the final stages of each piece.</p>
+      <p>The results are mixed-media in the broadest sense: photographic realism beside stylized digital illustration, typographic and geometric motifs, colors and forms balanced with a graphic designer's eye.</p>
+      <p>There is a noticeable influence of pop art and collage &mdash; cut-out historical personas re-contextualized in new settings &mdash; alongside the visual languages of antiquity: Mesopotamian symbols, classical sculpture, and calligraphic scripts embedded in the digital canvas.</p>
     </div>
   </div>
 </section>
 
 <!-- ======================== SERIES INTRO ======================== -->
-<section id="series" class="series-intro">
+<section id="series" class="section series">
   <p class="section__label reveal">The Series</p>
   <h2 class="section__title reveal">Iconic</h2>
-  <div class="series-intro__content reveal">
-    <div>
-      <p>Iconic I is the first chapter of a large fresque featuring legendary, folkloric, mythical and historical iconic characters who have left a mark in history and in the collective imagination.</p>
-      <p>The themes of the works are woven around unhealthy passions, transgressed taboos, rape, murder, incest, regicide, matricide, infanticide, fratricide and parricide. The characters are drawn from history, mythology, folklore and legends. These figures are the dark bent of human nature in all its glorious malevolence. The artist tried to capture the magnificence of monstrosity, a XXth-XXIst century trend where transgressive figures that are beyond good and evil in the nietzschean sense, are glamorized, looked upon and put on a pedestal.</p>
-      <p>This fresco transcends time and space, hence their anachronistic appearance, which refers to the universality of the figure. Indeed these icons no longer belong to a specific culture or space-time, but they belong to all civilizations as disparate as they are, being the reflection of a true humanity and faithful to its most archaic, most vile impulses, and the truest ones. The boundaries between evil and good disappear in favor of a life that becomes a total work of art.</p>
+  <p class="series__lede reveal">The dark bent of human nature, in all its glorious malevolence.</p>
+  <div class="series__grid">
+    <div class="reveal">
+      <p>Iconic I is the first chapter of a large fresco featuring legendary, folkloric, mythical and historical characters who have left a mark on history and on the collective imagination.</p>
+      <p>The themes are woven around unhealthy passions, transgressed taboos, rape, murder, incest, regicide, matricide, infanticide, fratricide and parricide. The artist tries to capture the magnificence of monstrosity &mdash; a XXth&ndash;XXIst century trend in which transgressive figures, beyond good and evil in the nietzschean sense, are glamorized, looked upon, and put on a pedestal.</p>
+      <p>This fresco transcends time and space, hence the anachronistic appearance of its figures, which speaks to the universality of the icon. These figures no longer belong to a specific culture or space-time, but to all civilizations &mdash; the reflection of a true humanity, faithful to its most archaic and most vile impulses.</p>
     </div>
-    <div>
-      <p>A trend of the second half of the XXth century is the reversal of traditional values of good and evil in western cultures. Good is viewed as irrelevant value in modern times and Evil becomes the norm of new generations putting it on a pedestal and glamorising it.</p>
-      <p>The result of in-depth research in mythology, history, politics, folklore, literature and anthropology, this series was created from photographs taken in Lebanon and France. The process begins with photography of the personnages. Folk and historical costumes, fabrics and colors are all elements chosen for their universal symbolism. These photographs are then the base of digital painting using several graphics and compositing softwares.</p>
-      <p>The results are then printed as a single artwork using ultraviolet light before being reworked using traditional fine art techniques by the artist.</p>
+    <div class="reveal d1">
+      <p>A trend of the second half of the XXth century is the reversal of the traditional values of good and evil in Western culture. Good is treated as an irrelevant value, and Evil becomes the norm for new generations &mdash; put on a pedestal and glamorized.</p>
+      <p>The result of in-depth research in mythology, history, politics, folklore, literature and anthropology, the series was built from photographs taken in Lebanon and France. Folk and historical costumes, fabrics and colors are all chosen for their universal symbolism, then transformed through digital painting and compositing.</p>
+      <p>The results are printed as a single artwork using ultraviolet light before being reworked using traditional fine-art techniques by the artist.</p>
     </div>
   </div>
 </section>
 
 <!-- ======================== GALLERY ======================== -->
-<section id="gallery" class="section" style="padding-bottom: 2rem;">
+<div id="gallery" class="gallery-head">
   <p class="section__label reveal">Works</p>
-  <h2 class="section__title reveal">Gallery</h2>
+  <h2 class="section__title reveal" style="margin-bottom:0;">Gallery</h2>
   <div class="gallery__filters reveal">
-    <button class="gallery__filter active" data-category="all">All</button>
+    <button class="gallery__filter active" data-category="all">All &middot; 18</button>
     <button class="gallery__filter" data-category="history">History</button>
     <button class="gallery__filter" data-category="mythology">Mythology</button>
     <button class="gallery__filter" data-category="testament">Ancien Testament</button>
     <button class="gallery__filter" data-category="folklore">Folklore</button>
   </div>
-</section>
+</div>
 
 <!-- ---- HISTORY ---- -->
-<div class="category-divider reveal">
-  <h3 class="category-divider__title display-font">History</h3>
-</div>
-<div class="gallery">
-  <div class="gallery__grid">
+<section class="cat" data-category="history">
+  <div class="cat__header reveal">
+    <h3 class="cat__title">History</h3>
+    <span class="cat__count">Eight works</span>
+  </div>
+  <div class="cat__grid">
 
-    <!-- 1. Semiramis and Ninyas -->
     <div class="artwork-card reveal"
-      data-category="history"
+      data-category="History"
       data-title="Semiramis and Ninyas"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/history/semiramis-and-ninyas.jpg"
       data-description="<p>Queen of Assyria (reigned 811-806 BCE) and builder of cities and empires, wife, widow and incestuous mother, Semiramis defies categories.</p><p>In Diodorus' narrative, Semiramis was a child of divine lineage, left for dead as an infant in a rocky desert. The doves of the area protected and fed the abandoned child until she was discovered and raised by Simmas, the keeper of the royal herds. Her beauty later captures the attention of Onnes, an officer from the king's court inspecting the royal herds, who marries her.</p><p>During the siege of Bactra, Onnes, assisting Ninus in his campaign, summons Semiramis to join him, and she undertakes her journey disguised as a man. When she arrives, however, she quickly discerns a way to conquer the city, and leads a group of soldiers to capture the acropolis. Ninus is impressed and soon becomes infatuated, offering to Onnes his own royal daughter in exchange for Semiramis. When Onnes's refusal provokes Ninus' furious threats of torture, the former goes mad and hangs himself. Semiramis becomes queen.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Semiramis and Ninyas</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Semiramis and Ninyas</div>
-        <div class="artwork-card__meta">History &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 2. Agrippina and Nero -->
     <div class="artwork-card reveal"
-      data-category="history"
+      data-category="History"
       data-title="Agrippina and Nero"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/history/agrippina-and-nero.jpg"
       data-description="<p>Agrippina displays the same rapacious female sexuality as Messalina, not because she is a nymphomaniac, but out of a desire to attain power. In the process, she effects a further devolution of the 'bad wife' trope, because she directs her sexual aggression not towards other younger men but towards her son, Nero.</p><p>Details of Agrippina's murder are recorded by Tacitus and Cassius Dio: according to them, in 59 CE, Nero told his mother that he wanted to reconcile with her during the Quinquatriae festival. While Agrippina was returning to her villa, her boat sunk in a premeditated accident. Agrippina managed to save herself, but Nero sent his Praefectus classis (fleet commander) to finish her off. Allegedly, Agrippina told her executioner to strike her womb that had produced her own murderer.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Agrippina and Nero</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Agrippina and Nero</div>
-        <div class="artwork-card__meta">History &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 3. Messalina and Britannicus -->
     <div class="artwork-card reveal"
-      data-category="history"
+      data-category="History"
       data-title="Messalina and Britannicus"
-      data-dimensions="880 x 1000 mm. Mixed media on UV print."
+      data-dimensions="700 x 1000 mm. Mixed media on UV print."
       data-image="images/history/messalina-and-britannicus.jpg"
       data-description="<p>In 38 A.D. Claudius had married Valeria Messalina, a scion of a noble house with impressive familial connections. Messalina bore him a daughter (Octavia, born in 39) and a son (Britannicus, born in 41); she was therefore the mother of the heir-apparent and enjoyed influence for that reason.</p><p>In the sources, Messalina is portrayed as little more than a pouting adolescent nymphomaniac who holds wild parties and arranges the deaths of former lovers or those who scorn her advances; and all this while her cuckolded husband blunders on in blissful ignorance.</p><p>Britannicus was the son of Roman emperor Claudius and his third wife Valeria Messalina. The sudden death of Britannicus shortly before his fourteenth birthday is reported by all extant sources as being the result of poisoning on Nero's orders&mdash;as Claudius' natural son, he represented a threat to Nero's claim to the throne.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Messalina and Britannicus</div>
-        <div class="placeholder-dim">880 x 1000 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Messalina and Britannicus</div>
-        <div class="artwork-card__meta">History &middot; 880 x 1000 mm</div>
-      </div>
     </div>
 
-    <!-- 4. Constantine I and Crispus -->
     <div class="artwork-card reveal"
-      data-category="history"
+      data-category="History"
       data-title="Constantine I and Crispus"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/history/constantine-and-crispus.jpg"
       data-description="<p>Roman emperor to profess Christianity. He not only initiated the evolution of the empire into a Christian state but also provided the impulse for a distinctively Christian culture that prepared the way for the growth of Byzantine and Western medieval culture.</p><p>Flavius Julius Crispus was born in 305 AD to Constantine and Minervina. Crispus was made Caesar in 317 AD and proved his abilities as a leader in military campaigns during the early 320's. Why Constantine executed his wife and son is not fully clear. Some later accounts provide the story that Fausta accused Crispus of trying to seduce her and that Constantine killed him in a fit of rage. This version goes on to say that Constantine discovered the charge to be false and had Fausta suffocated in her bath.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Constantine I and Crispus</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Constantine I and Crispus</div>
-        <div class="artwork-card__meta">History &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 5. Rodrigo and Lucrezia Borgia -->
     <div class="artwork-card reveal"
-      data-category="history"
+      data-category="History"
       data-title="Rodrigo and Lucrezia Borgia"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/history/rodrigo-and-lucrezia-borgia.jpg"
       data-description="<p>Pope Alexander VI (1431-1503), born Rodrigo Borja, from 1492 to 1503 is the most controversial of the Popes of the Renaissance, whose surname became a byword for low standards in the papacy of that era. More interested in wealth and power than in theology or spirituality, he was in reality a secular and not a religious leader.</p><p>Lucrezia Borgia (1480-1519) was the daughter of Rodrigo Borgia. She served for a time as de facto ruler of the Holy See during her father's absence and was infamous for her alleged involvement in various political and sexual intrigues. It was also rumored that Lucrezia possessed a hollow ring that she used frequently to poison drinks at the family's elaborate dinner-parties.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Rodrigo and Lucrezia Borgia</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Rodrigo and Lucrezia Borgia</div>
-        <div class="artwork-card__meta">History &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 6. Al-Khayzuran -->
     <div class="artwork-card reveal"
-      data-category="history"
+      data-category="History"
       data-title="Al-Khayzuran"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/history/al-khayzuran.jpg"
       data-description="<p>None of the women of the Abbasid caliphate have gone down in history quite like Al-Khayzuran bint Atta, wife to Caliph Al-Mahdi and mother to the caliphs Al-Hadi and Harun al-Rashid.</p><p>Al-Khayzuran &mdash; of Yemeni descent &mdash; was brought to Baghdad as a slave. She captured the heart of the Caliph Al-Mahdi, who broke all conventions of the Abbasid dynasty by freeing her and making her his wife. She was known for the visible role she played in various aspects of running the caliphate.</p><p>Stories tell of her attachment to power: it was rumoured that she was the one to plot the assassination of her son when he fell ill. Al-Tabari records that Al-Hadi's death was his mother's fault: she it was who ordered one of her slave-girls to suffocate him in his bed.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Al-Khayzuran</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Al-Khayzuran</div>
-        <div class="artwork-card__meta">History &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 7. Sitt al Mulk and Al Hakim -->
     <div class="artwork-card reveal"
-      data-category="history"
+      data-category="History"
       data-title="Sitt al Mulk and Al Hakim"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/history/sitt-al-mulk-and-al-hakim.jpg"
       data-description="<p>Fatimid dynasty witnessed the emergence of a number of women who spearheaded political action and exercised power. One of the most prominent and most successful among them was Princess Sitt al-Mulk, born in 970 AD, who was the daughter of the fifth Fatimid Caliph Nizar al-Aziz Billah.</p><p>After the death of her father and the succession of her younger brother, Al-Hakim bi-Amr Allah, Sitt al-Mulk took over the reigns of government and had the upper hand when it came to decision-making. A number of historians also mention that Sitt al-Mulk plotted with some of her allies to kill her brother and spread rumours among his followers that he had disappeared.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Sitt al Mulk and Al Hakim</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Sitt al Mulk and Al Hakim</div>
-        <div class="artwork-card__meta">History &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 8. Shajara al-Durr and Izz ad-Din Aybak -->
     <div class="artwork-card reveal"
-      data-category="history"
+      data-category="History"
       data-title="Shajara al-Durr and Izz ad-Din Aybak"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/history/shajara-al-durr.jpg"
       data-description="<p>Shajara al Durr. Not much is known about Shajarat al-Durr's early life. Her name in Arabic translates to Tree of Pearls. She was of immense beauty. Thought to have been born in modern-day Armenia or Turkey somewhere in the early 13th century. She was listed as a Mamluk: a foreign slave.</p><p>She assumed sovereignty of Egypt &mdash; much to the chagrin of men in power. She was considered the next legitimate heir, and the new womb of the Ayyubid crown. Vain, envious, and furious, she plotted Aybek's murder. Successful in her endeavor, she was turned over to Aybek's first wife and Ali's mother, the woman she herself had been a homewrecker to, only to be beaten to death by the woman's slaves.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Shajara al-Durr and Izz ad-Din Aybak</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Shajara al-Durr and Izz ad-Din Aybak</div>
-        <div class="artwork-card__meta">History &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
   </div>
-</div>
+</section>
 
 <!-- ---- MYTHOLOGY ---- -->
-<div class="category-divider reveal">
-  <h3 class="category-divider__title display-font">Mythology</h3>
-</div>
-<div class="gallery">
-  <div class="gallery__grid">
+<section class="cat" data-category="mythology">
+  <div class="cat__header reveal">
+    <h3 class="cat__title">Mythology</h3>
+    <span class="cat__count">Five works</span>
+  </div>
+  <div class="cat__grid">
 
-    <!-- 9. Seth and Horus -->
     <div class="artwork-card reveal"
-      data-category="mythology"
+      data-category="Mythology"
       data-title="Seth and Horus"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/mythology/seth-and-horus.jpg"
       data-description="<p>Osiris ruled as pharaoh of Egypt with his sister-wife Isis, bringing peace and prosperity to the land. But his elder brother, Seth became insanely jealous and led Osiris to a watery death after tricking him into a perfectly fitted coffin.</p><p>The story is told in the Chester Beatty Papyrus No. 1, The Contendings of Horus and Seth, which dates back to the early Middle Kingdom (2040-1674 BCE). As the son of Osiris, Horus presented his claim to the throne to a tribunal of three of the most powerful deities in the Egyptian pantheon.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Seth and Horus</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Seth and Horus</div>
-        <div class="artwork-card__meta">Mythology &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 10. Tantalus and Pelops -->
     <div class="artwork-card reveal"
-      data-category="mythology"
+      data-category="Mythology"
       data-title="Tantalus and Pelops"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/mythology/tantalus-and-pelops.jpg"
       data-description="<p>In some Greek myths, cannibalism and the killing of one's offspring are closely linked. Tantalus, the king of Phrygia, would regularly join the Olympian gods at their table as an intimate friend because he was also Zeus' son. Yet there was one thing the Greek gods would not forgive him for: hubris.</p><p>Tantalus grew so arrogant that to test whether the gods were omniscient, he prepared a feast for them in his palace. When they sat down at the table, Demeter, still distracted by the disappearance of her daughter Persephone, took a bite of the meat served. The rest of the table grew silent as they knew Tantalus had served them his son, Pelops. Pelops was brought to life, once the piece of his shoulder eaten by Demeter was replaced with ivory. As for Tantalus, he was thrown into the underworld for his eternal suffering.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Tantalus and Pelops</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Tantalus and Pelops</div>
-        <div class="artwork-card__meta">Mythology &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 11. Procne and Itys -->
     <div class="artwork-card reveal"
-      data-category="mythology"
+      data-category="Mythology"
       data-title="Procne and Itys"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/mythology/procne-and-itys.jpg"
       data-description="<p>Tereus, a Thracian king, marries Procne, an Athenian princess, and brings her to live with him in Thrace. After a while, Procne begins to miss her beloved sister, Philomela. When Tereus agrees to bring her sister, he travels to Athens, only to fall in deep lust for Philomela.</p><p>Since she is unable to speak, Philomela weaves the story into a tapestry. Procne finds her sister and brings her back to the palace to plot revenge against Tereus. Procne kills their son, Itys, and puts the pieces of his dismembered body in Tereus' dinner.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Procne and Itys</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Procne and Itys</div>
-        <div class="artwork-card__meta">Mythology &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 12. Phaedra and Hippolytus -->
     <div class="artwork-card reveal"
-      data-category="mythology"
+      data-category="Mythology"
       data-title="Phaedra and Hippolytus"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/mythology/phaedra-and-hippolytus.jpg"
       data-description="<p>Hippolytus, the bastard son of Theseus, king of Athens, has a devotion to Artemis, goddess of the hunt, which angered Aphrodite, goddess of love, due to his resulting neglect of her. As punishment, Aphrodite caused Hippolytus' stepmother Phaedra to fall in love with him.</p><p>Being rejected by him, Phaedra created a scene of molestation and called for help. She then hung herself, leaving a note accusing Hippolytus of sexual crimes. On receiving the note, Theseus ordered Hippolytus banished from Athens and then called upon Poseidon to grant the last of his three wishes by destroying his son.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Phaedra and Hippolytus</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Phaedra and Hippolytus</div>
-        <div class="artwork-card__meta">Mythology &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 13. Jocasta and Oedipus -->
     <div class="artwork-card reveal"
-      data-category="mythology"
+      data-category="Mythology"
       data-title="Jocasta and Oedipus"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/mythology/jocasta-and-oedipus.jpg"
       data-description="<p>Jocasta was the daughter of the king of Thebes, Menoeceus, and sister of Creon. She was the wife of Laius, who was given a prophecy saying that if he ever had a child, the child would kill him and marry his wife.</p><p>When he ended up in Thebes, he helped the locals get rid of the monster Sphinx, and he was given the throne of the city. He then married Jocasta, again not knowing that she was his mother. Thebes was then struck by a plague, and that's when Oedipus and Jocasta realised the truth. Upon hearing the news, Oedipus plucked out his eyes, while Jocasta committed suicide.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Jocasta and Oedipus</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Jocasta and Oedipus</div>
-        <div class="artwork-card__meta">Mythology &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
   </div>
-</div>
+</section>
 
 <!-- ---- ANCIEN TESTAMENT ---- -->
-<div class="category-divider reveal">
-  <h3 class="category-divider__title display-font">Ancien Testament</h3>
-</div>
-<div class="gallery">
-  <div class="gallery__grid">
+<section class="cat" data-category="testament">
+  <div class="cat__header reveal">
+    <h3 class="cat__title">Ancien Testament</h3>
+    <span class="cat__count">Two works</span>
+  </div>
+  <div class="cat__grid">
 
-    <!-- 14. Tamar, Perez and Zerah -->
     <div class="artwork-card reveal"
-      data-category="testament"
+      data-category="Ancien Testament"
       data-title="Tamar, Perez and Zerah"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/testament/tamar-perez-and-zerah.jpg"
       data-description="<p>Judah was one of Leah's sons, and Leah the wife that Jacob didn't love. Judah was also the patriarch of the lineage of King David and Jesus.</p><p>Judah had three sons: Er, Onan, and Shelah. Er married a woman named Tamar, and Er was so evil that he died. Onan married Tamar, but didn't want to preserve his brother's place in the lineage, and so he did not impregnate Tamar, and was killed for that sin.</p><p>Tamar, the widow who had the right to bear Judah's eldest son's child and continue the family line, responded. She dressed as a prostitute, tempted Judah, and conceived a child with him without him knowing who she was. Tamar had twin sons, Perez and Zerah, and Perez continued the family line and his descendants included King David and Jesus.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Tamar, Perez and Zerah</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Tamar, Perez and Zerah</div>
-        <div class="artwork-card__meta">Ancien Testament &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 15. Herodias and Salomé -->
     <div class="artwork-card reveal"
-      data-category="testament"
+      data-category="Ancien Testament"
       data-title="Herodias and Salom&eacute;"
       data-dimensions="700 x 700 mm. Mixed media on UV print."
       data-image="images/testament/herodias-and-salome.jpg"
       data-description="<p>Herodias is mentioned as being in an adulterous marriage to Herod because she actually belonged to his brother Philip. Under the Jewish Law, this was a particularly heinous crime.</p><p>When Salome danced in front of a company of men, she violated all rules of modesty and propriety. Because her dancing stirred his fleshly nature and pleased him, Herod promised with an oath to give Salome whatever she wanted, up to the half of his kingdom. Through Salome, Herodias was able to accomplish the wickedness she had planned.</p><p>When Herodias told her daughter to request John's head in a charger, she should have been repulsed. A charger was a large platter on which food was served. Salome seemed to be happy enough with her mother's direction, because John, in his faithfulness to the Law of the God of Heaven, had offended the whole family.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Herodias and Salom&eacute;</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Herodias and Salom&eacute;</div>
-        <div class="artwork-card__meta">Ancien Testament &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
   </div>
-</div>
+</section>
 
 <!-- ---- FOLKLORE ---- -->
-<div class="category-divider reveal">
-  <h3 class="category-divider__title display-font">Folklore</h3>
-</div>
-<div class="gallery">
-  <div class="gallery__grid">
+<section class="cat" data-category="folklore">
+  <div class="cat__header reveal">
+    <h3 class="cat__title">Folklore</h3>
+    <span class="cat__count">Three works</span>
+  </div>
+  <div class="cat__grid">
 
-    <!-- 16. Baba Yaga -->
     <div class="artwork-card reveal"
-      data-category="folklore"
+      data-category="Folklore"
       data-title="Baba Yaga"
-      data-dimensions="700 x 700 mm. Mixed media on UV print."
+      data-dimensions="1000 x 700 mm. Mixed media on UV print."
       data-image="images/folklore/baba-yaga.jpg"
       data-description="<p>Baba Yaga is a witch from Slavic folklore who lives in a magical hut in the forest and either helps, imprisons, or eats those she encounters. She is among the most famous figures from Slavic folktales and has found a following in the present day among those who see her as embodying female empowerment and independence.</p><p>As she lives outside the norms of society and always by her own rules, she has come to embody the concept of feminine power and emancipation in the modern age. Although she retains her menacing character, she is increasingly seen as a source of wisdom and power rather than a personification of evil.</p><p>Although she kidnaps and eats children, Baba Yaga also serves as a catalyst for change. In these tales, and even in the others where she is depicted as the villain, Baba Yaga epitomizes the mythological trickster archetype.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Baba Yaga</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Baba Yaga</div>
-        <div class="artwork-card__meta">Folklore &middot; 700 x 700 mm</div>
-      </div>
     </div>
 
-    <!-- 17. Kuchisake-onna -->
     <div class="artwork-card reveal"
-      data-category="folklore"
+      data-category="Folklore"
       data-title="Kuchisake-onna"
-      data-dimensions="700 x 700 mm. Mixed media on UV print."
+      data-dimensions="1000 x 700 mm. Mixed media on UV print."
       data-image="images/folklore/kuchisake-onna.jpg"
       data-description="<p>Long ago, during the feudal period of Japan, a young and beautiful woman lived happily with her husband, who is a samurai. However, she was very vain and one day, she secretly cheated on her husband after meeting a younger and attractive man. Enraged, the samurai raised his sword and mutilated her mouth ear to ear and asked her 'Who will think you're beautiful now?'.</p><p>After the incident, the woman died either from her injuries or committed suicide after the humiliating experience and she later became a restless spirit, doomed to roam on Earth for eternity. As a vengeful spirit, she hid behind the bushes and stalked students who walked home from school during the late afternoon.</p>">
-      <div class="artwork-card__placeholder">
-        <div class="placeholder-title">Kuchisake-onna</div>
-        <div class="placeholder-dim">700 x 700 mm</div>
-      </div>
-      <div class="artwork-card__overlay">
-        <div class="artwork-card__title">Kuchisake-onna</div>
-        <div class="artwork-card__meta">Folklore &middot; 700 x 700 mm</div>
-      </div>
+    </div>
+
+    <div class="artwork-card reveal"
+      data-category="Folklore"
+      data-title="La Llorona"
+      data-dimensions="1000 x 700 mm. Mixed media on UV print."
+      data-image="images/folklore/la-llorona.jpg"
+      data-description="<p>All over Mexico and the Southwest, locals tell of a woman named La Llorona &mdash; the Weeping Woman &mdash; dressed all in white, who haunts the banks of rivers, heard crying for her children. While she seems innocent from afar, those who get too close hear a deafening scream, and most who see her meet a terrible fate soon after. Witnesses wonder if she is even human, for her face is often described as blank and featureless.</p><p>The original story centres on a woman named Mar&iacute;a, who marries a rich vaquero and bears him two children. When she finds her husband with another woman, she takes the children to a nearby river and drowns them in a fit of rage. Regretting it instantly, she tries to take her own life &mdash; but is refused entry to the afterlife without them, doomed to a strange limbo between the living and the dead, forever wandering the water in search of their souls.</p>">
     </div>
 
   </div>
-</div>
+</section>
 
 <!-- ======================== EXHIBITIONS ======================== -->
-<section id="exhibitions" class="section">
+<section id="exhibitions" class="section exhibitions">
   <p class="section__label reveal">Selected</p>
   <h2 class="section__title reveal">Exhibitions</h2>
   <div class="exhibitions__list">
@@ -474,7 +341,7 @@
       <div class="exhibition__details">
         <h3 class="exhibition__title">Iconic I</h3>
         <p class="exhibition__venue">Series &mdash; Mixed media on UV print</p>
-        <p class="exhibition__desc">The first chapter of a large fresque featuring 17 works across History, Mythology, Ancien Testament, and Folklore. Legendary, folkloric, mythical and historical iconic characters staged through photography, digital painting, and traditional fine art techniques.</p>
+        <p class="exhibition__desc">The first chapter of a large fresco featuring 18 works across History, Mythology, Ancien Testament, and Folklore. Legendary, folkloric, mythical and historical figures staged through photography, digital painting, and traditional fine-art techniques.</p>
       </div>
     </div>
 
@@ -491,7 +358,7 @@
 </section>
 
 <!-- ======================== EDUCATION ======================== -->
-<section id="education" class="education">
+<section id="education" class="section education">
   <p class="section__label reveal">Background</p>
   <h2 class="section__title reveal">Education &amp; Teaching</h2>
   <div class="education__grid">
@@ -500,12 +367,12 @@
       <h4>Paris I Panth&eacute;on-Sorbonne</h4>
       <p>Art History, Fine Arts &amp; Design</p>
     </div>
-    <div class="education__card reveal">
+    <div class="education__card reveal d1">
       <p class="card-label">Research</p>
       <h4>Universit&eacute; Paris-Sorbonne (Paris IV)</h4>
       <p>MPhil &mdash; Art History</p>
     </div>
-    <div class="education__card reveal">
+    <div class="education__card reveal d2">
       <p class="card-label">Training</p>
       <h4>The Louvre, Paris</h4>
       <p>Special Program in Art</p>
@@ -515,12 +382,12 @@
       <h4>Majal Design School</h4>
       <p>Instructor &mdash; Art &amp; Design</p>
     </div>
-    <div class="education__card reveal">
+    <div class="education__card reveal d1">
       <p class="card-label">Teaching</p>
       <h4>AUST</h4>
       <p>American University of Science &amp; Technology</p>
     </div>
-    <div class="education__card reveal">
+    <div class="education__card reveal d2">
       <p class="card-label">Teaching</p>
       <h4>Espace Fann</h4>
       <p>Art Centre, Beirut</p>
@@ -531,7 +398,7 @@
 <!-- ======================== MODAL ======================== -->
 <div class="modal-backdrop">
   <div class="modal">
-    <button class="modal__close">&times;</button>
+    <button class="modal__close" aria-label="Close">&times;</button>
     <div class="modal__image"></div>
     <div class="modal__text">
       <p class="modal__category"></p>
@@ -545,12 +412,13 @@
 <!-- ======================== FOOTER ======================== -->
 <footer id="contact" class="footer">
   <p class="footer__name">Bassam Anouti</p>
+  <p class="footer__tag">Iconic &mdash; a fresco of transgression</p>
   <div class="footer__links">
     <a href="mailto:contact@bassamanouti.com">Email</a>
-    <a href="#" target="_blank">Instagram</a>
-    <a href="#" target="_blank">Artsy</a>
+    <a href="#" data-social="instagram" target="_blank" rel="noopener">Instagram</a>
+    <a href="#" data-social="artsy" target="_blank" rel="noopener">Artsy</a>
   </div>
-  <p class="footer__copy">&copy; 2024 Bassam Anouti. All rights reserved.</p>
+  <p class="footer__copy">&copy; 2026 Bassam Anouti. All rights reserved.</p>
 </footer>
 
 <script src="js/main.js"></script>

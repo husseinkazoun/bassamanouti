@@ -3,3 +3,8 @@ node_modules/
 .claude/
 .snapshots/
 .env
+
+# local redesign backups (originals live in git history)
+*.backup.html
+*.backup.css
+*.backup.js
