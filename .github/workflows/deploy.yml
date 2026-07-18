@@ -32,6 +32,12 @@ jobs:
           mkdir -p dist
           cp index.html dist/
           cp -r css js images dist/
+          mkdir -p dist/multipage/data dist/multipage/media
+          cp multipage/index.html dist/multipage/
+          cp -r multipage/about multipage/series multipage/exhibitions \
+            multipage/contact multipage/assets dist/multipage/
+          cp multipage/data/site-content.json dist/multipage/data/
+          cp -r multipage/media/cropped dist/multipage/media/
 
       - name: Deploy to Cloudflare Pages
         env:
