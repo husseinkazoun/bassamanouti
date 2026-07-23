@@ -1,72 +1,75 @@
 {
   "_meta": {
-    "prepared_by": "content-research agent (parallel with Codex/implementation)",
-    "purpose": "Authoritative content manifest for the rebuilt multipage site. Codex consumes this; do not treat as final copy without the caveats in SOURCE_NOTES.md.",
-    "authoritative_sources": [
-      "Series/Iconic English  2.pdf (25-slide Keynote deck, dated 2022)",
-      "Series/Bestiaire_mythique.pdf (8-slide Keynote deck, dated 2019-2021)",
-      "Series/Baba Yaga pdf 1.pdf (4-slide standalone presentation, dated 2022)",
-      "cropped_art/ (33 approved cropped iPad screenshots)"
-    ],
-    "removed_from_public_content": [
-      "Ancien Testament division of Iconic (Tamar/Perez/Zerah; Herodias and Salome)",
-      "Religion category / page / classification (none created anywhere)",
-      "Education & Teaching section",
-      "Process / Method section",
-      "Iconic and Bestiaire Mythique as 'exhibitions' (they are series, not exhibitions)"
-    ]
+    "purpose": "Public content manifest for the Bassam Anouti site and the future bilingual (EN/FR) site and digital identity. This file is deployed and publicly downloadable; it contains approved, public-ready values only.",
+    "public_only": true,
+    "internal_companion": "internal-research.json — internal research, provenance, caveats and unverified leads; NOT deployed and NOT public."
   },
-
   "artist": {
     "name": "Bassam Anouti",
-    "roles": ["Artist", "Art Historian", "Digital Image-Maker"],
-    "places": ["Beirut", "Paris", "Rome"],
+    "roles": [
+      "Artist",
+      "Art Historian",
+      "Digital Image-Maker"
+    ],
+    "places": [
+      "Beirut",
+      "Paris",
+      "Rome"
+    ],
     "tagline": "At the intersection of classical visual culture and contemporary digital practice.",
     "bio": [
       "Bassam Anouti is a multidisciplinary artist, art historian, educator and digital image-maker whose work is shaped by a broad academic and creative formation across art history, French literature, clinical psychology, fine arts, fashion design, jewelry design and graphic design.",
       "His practice brings together research, image-making and visual storytelling. Working across photography, digital painting, compositing and mixed media, Anouti develops images that are both constructed and narrative. His work is grounded in historical, anthropological, literary and mythological research, without being limited to illustration. Each image is conceived as a visual situation in which characters, symbols and cultural references enter into tension.",
       "Narration plays a central role in his artistic language. The figures and scenes he constructs establish a dialogue with the viewer, opening a space of interpretation rather than delivering a fixed meaning. His images often operate through confrontation, ambiguity and psychological intensity, allowing the spectator to participate in the story being staged.",
-      "Alongside his artistic practice, Anouti has developed a strong pedagogical practice in the visual arts, with a focus on contemporary image-making, digital tools and creative methodologies. He has also worked with UNDP as a trainer and mentor, contributing to programs dedicated to visual development and digital creation."
+      "Alongside his artistic practice, Anouti has developed a strong pedagogical practice in the visual arts, with a focus on contemporary image-making, digital tools and creative methodologies. He has also worked with UNDP as a trainer and mentor, contributing to programs dedicated to visual development and digital creation.",
+      "Anouti’s work stands at the intersection of classical visual culture and contemporary digital practice. It reflects a sustained interest in collective memory, symbolic systems, cultural hybridization and the narrative power of images."
     ],
-    "bio_note": "Bio text preserved verbatim from the approved English bio in the repository (root index.html, About section). Not rewritten.",
     "philosophy": {
       "title": "Order Against Chaos",
       "paragraphs": [
         "Having come of age in the chaos of the Lebanese Civil War, Anouti witnessed disorder firsthand. His response has been to make work that is cérébrale, ordonnée et réfléchie — cerebral, ordered, and reflective — a deliberate counter-narrative to the socio-political and human disorder he lived through.",
         "Drawing on principles of psychology, his art-making functions as an intellectual exercise: by imposing meticulous structure, symmetry, and thought, he symbolically mends the fractures of a broken world. His compositions are concept-driven and highly deliberate, the inverse of the randomness of a war-torn reality.",
         "His art stages a dialogue between Eastern and Western iconography — weaving Babylonian and Levantine mythologies through European technique, juxtaposing the ancient with the modern. Anouti assumes an audience with artistic and literary appreciation, and a historical understanding of Eastern and Western cultures, as well as their symbolism."
-      ],
-      "note": "Preserved verbatim from the approved English text in the repository (root index.html, Philosophy block)."
+      ]
     }
   },
-
   "navigation": [
-    { "label": "About", "id": "about" },
-    { "label": "Iconic", "id": "iconic" },
-    { "label": "Bestiaire Mythique", "id": "bestiaire-mythique" },
-    { "label": "Gallery", "id": "gallery" },
-    { "label": "Exhibitions", "id": "exhibitions" },
-    { "label": "Contact", "id": "contact" }
+    {
+      "label": "Work",
+      "id": "work",
+      "route": "series",
+      "note": "Maps to the existing /series/ route; contains the two series below.",
+      "children": [
+        {
+          "label": "Iconic",
+          "id": "iconic",
+          "route": "series/iconic"
+        },
+        {
+          "label": "Bestiaire Mythique",
+          "id": "bestiaire-mythique",
+          "route": "series/bestiaire-mythique"
+        }
+      ]
+    },
+    {
+      "label": "About",
+      "id": "about",
+      "route": "about"
+    },
+    {
+      "label": "Contact",
+      "id": "contact",
+      "route": "contact"
+    }
   ],
-
+  "navigation_note": "Public navigation is Work · About · Contact, plus a future EN/FR language toggle. 'Work' is the Series route and contains Iconic and Bestiaire Mythique.",
   "media": {
     "base_path": "media/cropped/",
     "format": "webp",
-    "note": "Every image `src` below is relative to multipage/ (i.e. multipage/media/cropped/…). These are the ONLY approved public artwork images. Do NOT use the full artworks under the root images/ directory or extract images from the PDFs.",
-    "cleanup_notice": "All cropped assets have been cleaned of visible app/iOS chrome (status bar, Files/Preview markup toolbar, folder/breadcrumb label, page-counter pill, and — on Baba Yaga — a Gmail notification banner). Chrome was removed by an honest tighter top-crop of each image only (no inpainting, cloning, generation or fabrication of any kind). Each asset remains a partial fragment/detail and none reveals a complete artwork. All per-image `chrome` flags are now false. Per-image crop amounts are documented in SOURCE_NOTES.md §7.",
-    "baba_yaga_note": "iconic-folklore-baba-yaga.webp (from IMG_5512) previously carried a 'Gmail Notification' banner; it was removed by an honest tighter top-crop (185 px). The image is now clean and publishable and remains a strong fragment (eyes and coin veil intact).",
-    "unmapped_images": [
-      {
-        "src": "media/cropped/iconic-unidentified-detail-5497.webp",
-        "originalFilename": "IMG_5497.PNG",
-        "alt": "Costume / fabric detail — from the Iconic series by Bassam Anouti",
-        "mappingConfidence": "unknown",
-        "chrome": false,
-        "note": "A usable crop that could not be confidently attributed to a specific work (a brocade/costume detail with a purple glove, no identifying face). Most likely History (possibly Agrippina and Nero or Rodrigo and Lucrezia Borgia) but not confirmed. Left unassigned rather than guessed. Available for Codex to use as a decorative/texture image or to attribute once the artist confirms."
-      }
-    ]
+    "note": "Every image `src` in this manifest is relative to multipage/ (i.e. multipage/media/cropped/…) and is a CROPPED FRAGMENT — never a complete artwork. These cropped fragments are the only approved public artwork images for the series pages. Do NOT use the full artworks under the root images/ directory, and do NOT extract images from the PDFs, for series content. The single, deliberate exception is the homepage hero (see homepage_hero_exception).",
+    "homepage_hero_exception": "The homepage hero is one full artwork (Semiramis and Ninyas) shown only on the home page. It lives OUTSIDE this crop manifest: it is referenced directly by the homepage (a full-artwork file under the repository root images/ directory, via the Codex-owned index.html), not from media/cropped/. It is a deliberate homepage-only exception and does NOT change the cropped-fragments-only policy for the series pages. It is intentionally not listed among the crops here."
   },
-
   "series": [
     {
       "slug": "iconic",
@@ -75,7 +78,6 @@
       "date": "2022",
       "type": "series",
       "statement": "Iconic I is the first chapter of a large fresco featuring legendary, folkloric, mythical and historical characters who have left a mark on history and on the collective imagination. The themes are woven around unhealthy passions, transgressed taboos, rape, murder, incest, regicide, matricide, infanticide, fratricide and parricide. The artist tries to capture the magnificence of monstrosity — a XXth–XXIst century trend in which transgressive figures, beyond good and evil in the nietzschean sense, are glamorized, looked upon, and put on a pedestal. The result of in-depth research in mythology, history, politics, folklore, literature and anthropology, the series was built from photographs taken in Lebanon and France, then transformed through digital painting and compositing, printed as a single artwork using ultraviolet light before being reworked using traditional fine-art techniques.",
-      "statement_source": "Approved English series intro (root index.html), consistent with Iconic deck slide 3.",
       "groups": [
         {
           "slug": "history",
@@ -88,11 +90,15 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "Queen of Assyria, builder of cities and empires — wife, widow and incestuous mother — whose rise, by valour in some accounts and by treachery in others, ends with her seizing the throne.",
-              "source": "Iconic deck slide 5",
               "images": [
-                { "src": "media/cropped/iconic-history-semiramis-and-ninyas-a.webp", "originalFilename": "IMG_5493.PNG", "alt": "Semiramis (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false },
-                { "src": "media/cropped/iconic-history-semiramis-and-ninyas-b.webp", "originalFilename": "IMG_5494.PNG", "alt": "Ninyas (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false },
-                { "src": "media/cropped/iconic-history-semiramis-and-ninyas-c.webp", "originalFilename": "IMG_5495.PNG", "alt": "Ninyas, 'Mama's Boy' (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-history-semiramis-and-ninyas-b.webp",
+                  "alt": "Ninyas (detail) — from the Iconic series by Bassam Anouti"
+                },
+                {
+                  "src": "media/cropped/iconic-history-semiramis-and-ninyas-c.webp",
+                  "alt": "Ninyas, 'Mama's Boy' (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -102,9 +108,11 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "Agrippina turns her sexual aggression toward her own son Nero in a bid to keep power; Nero has her murdered, and she reportedly bids her killer strike the womb that bore him.",
-              "source": "Iconic deck slide 6",
               "images": [
-                { "src": "media/cropped/iconic-history-agrippina-and-nero.webp", "originalFilename": "IMG_5496.PNG", "alt": "Agrippina and Nero (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-history-agrippina-and-nero.webp",
+                  "alt": "Agrippina and Nero (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -114,9 +122,11 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 1000 mm",
               "summary": "Claudius' young wife Messalina, cast by the sources as a scheming nymphomaniac, and her son Britannicus — the heir later poisoned on Nero's orders.",
-              "source": "Iconic deck slide 7",
               "images": [
-                { "src": "media/cropped/iconic-history-messalina-and-britannicus.webp", "originalFilename": "IMG_5498.PNG", "alt": "Messalina and the child Britannicus (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-history-messalina-and-britannicus.webp",
+                  "alt": "Messalina and the child Britannicus (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -126,7 +136,6 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "The first Roman emperor to profess Christianity and his son Crispus, executed by his father on a charge later found to be false.",
-              "source": "Iconic deck slide 8",
               "images": []
             },
             {
@@ -136,9 +145,11 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "Pope Alexander VI (Rodrigo Borgia) and his daughter Lucrezia, whose family name became a byword for corruption, poison and intrigue in the Renaissance papacy.",
-              "source": "Iconic deck slide 9",
               "images": [
-                { "src": "media/cropped/iconic-history-rodrigo-and-lucrezia-borgia.webp", "originalFilename": "IMG_5499.PNG", "alt": "Rodrigo (as Pope Alexander VI) and Lucrezia Borgia (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-history-rodrigo-and-lucrezia-borgia.webp",
+                  "alt": "Rodrigo (as Pope Alexander VI) and Lucrezia Borgia (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -148,9 +159,11 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "A slave who became wife of Caliph Al-Mahdi and mother of two caliphs, ruling in all but name — and rumoured to have had her own son suffocated when he crossed her.",
-              "source": "Iconic deck slide 10",
               "images": [
-                { "src": "media/cropped/iconic-history-al-khayzuran.webp", "originalFilename": "IMG_5500.PNG", "alt": "Al-Khayzuran (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-history-al-khayzuran.webp",
+                  "alt": "Al-Khayzuran (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -160,10 +173,15 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "The Fatimid princess who took the reins of government from her brother Al-Hakim bi-Amr Allah and is said to have plotted his death.",
-              "source": "Iconic deck slide 11",
               "images": [
-                { "src": "media/cropped/iconic-history-sitt-al-mulk-and-al-hakim-a.webp", "originalFilename": "IMG_5501.PNG", "alt": "Sitt al Mulk with the severed head of Al Hakim (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false },
-                { "src": "media/cropped/iconic-history-sitt-al-mulk-and-al-hakim-b.webp", "originalFilename": "IMG_5502.PNG", "alt": "Sitt al Mulk (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-history-sitt-al-mulk-and-al-hakim-a.webp",
+                  "alt": "Sitt al Mulk with the severed head of Al Hakim (detail) — from the Iconic series by Bassam Anouti"
+                },
+                {
+                  "src": "media/cropped/iconic-history-sitt-al-mulk-and-al-hakim-b.webp",
+                  "alt": "Sitt al Mulk (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -173,10 +191,15 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "The slave who became Sultana of Egypt, ran the state through war and, when her husband Aybak sought to replace her, plotted his murder — and was beaten to death in turn.",
-              "source": "Iconic deck slide 12",
               "images": [
-                { "src": "media/cropped/iconic-history-shajara-al-durr-a.webp", "originalFilename": "IMG_5503.PNG", "alt": "Shajara al-Durr (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false },
-                { "src": "media/cropped/iconic-history-shajara-al-durr-b.webp", "originalFilename": "IMG_5504.PNG", "alt": "Izz ad-Din Aybak (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-history-shajara-al-durr-a.webp",
+                  "alt": "Shajara al-Durr (detail) — from the Iconic series by Bassam Anouti"
+                },
+                {
+                  "src": "media/cropped/iconic-history-shajara-al-durr-b.webp",
+                  "alt": "Izz ad-Din Aybak (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             }
           ]
@@ -192,10 +215,15 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "From the Contendings of Horus and Seth: the fratricidal god Seth and his nephew Horus contend for the throne of Egypt through violence and seduction.",
-              "source": "Iconic deck slide 14",
               "images": [
-                { "src": "media/cropped/iconic-mythology-seth-and-horus-a.webp", "originalFilename": "IMG_5505.PNG", "alt": "Seth and Horus (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false },
-                { "src": "media/cropped/iconic-mythology-seth-and-horus-b.webp", "originalFilename": "IMG_5506.PNG", "alt": "Seth and Horus, costume detail — from the Iconic series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-mythology-seth-and-horus-a.webp",
+                  "alt": "Seth and Horus (detail) — from the Iconic series by Bassam Anouti"
+                },
+                {
+                  "src": "media/cropped/iconic-mythology-seth-and-horus-b.webp",
+                  "alt": "Seth and Horus, costume detail — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -205,9 +233,11 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "Tantalus, testing the gods' omniscience, serves them his own son Pelops at a feast; the boy is restored to life and Tantalus is condemned to eternal torment.",
-              "source": "Iconic deck slide 15",
               "images": [
-                { "src": "media/cropped/iconic-mythology-tantalus-and-pelops.webp", "originalFilename": "IMG_5507.PNG", "alt": "Tantalus and the child Pelops (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-mythology-tantalus-and-pelops.webp",
+                  "alt": "Tantalus and the child Pelops (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -217,7 +247,6 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "Avenging her sister Philomela, Procne kills her son Itys and serves him to his father Tereus.",
-              "source": "Iconic deck slide 16",
               "images": []
             },
             {
@@ -227,9 +256,11 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "Struck by Aphrodite's curse, Phaedra falls for her stepson Hippolytus; rejected, she accuses him falsely and he is destroyed by his father's curse.",
-              "source": "Iconic deck slide 17",
               "images": [
-                { "src": "media/cropped/iconic-mythology-phaedra-and-hippolytus.webp", "originalFilename": "IMG_5508.PNG", "alt": "Phaedra and Hippolytus (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-mythology-phaedra-and-hippolytus.webp",
+                  "alt": "Phaedra and Hippolytus (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -239,9 +270,11 @@
               "medium": "Mixed media on UV print",
               "dimensions": "700 × 700 mm",
               "summary": "Jocasta and the son she abandoned, Oedipus, who unknowingly kills his father and marries his mother — ending in her suicide and his self-blinding.",
-              "source": "Iconic deck slide 18",
               "images": [
-                { "src": "media/cropped/iconic-mythology-jocasta-and-oedipus.webp", "originalFilename": "IMG_5509.PNG", "alt": "Jocasta and the child Oedipus (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-mythology-jocasta-and-oedipus.webp",
+                  "alt": "Jocasta and the child Oedipus (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             }
           ]
@@ -256,12 +289,12 @@
               "date": "2022",
               "medium": "UV digital print and mixed media",
               "dimensions": "1000 × 700 mm",
-              "dimensions_note": "The Iconic deck (slide 23) gives 1000 × 700 mm; the standalone 'Baba Yaga' presentation captions the same work as 60 × 60 cm. Conflict unresolved — see needs_confirmation.",
               "summary": "The witch of Slavic folklore who lives by her own rules in a forest hut — helper, captor and devourer alike — increasingly read as a figure of feminine power and the trickster archetype.",
-              "source": "Iconic deck slide 23; also the subject of a dedicated standalone presentation (Baba Yaga pdf 1.pdf).",
-              "also_presented_as": "Standalone single-work presentation with its own title page, an annotated breakdown of its cultural material sources, and an extended essay on the trickster archetype. It is the same 2022 artwork, not a separate series.",
               "images": [
-                { "src": "media/cropped/iconic-folklore-baba-yaga.webp", "originalFilename": "IMG_5512.PNG", "alt": "Baba Yaga (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false, "chromeNote": "Source screenshot IMG_5512 carried a Gmail notification banner; it was removed by the approved top-crop cleanup. The image is clean and publishable." }
+                {
+                  "src": "media/cropped/iconic-folklore-baba-yaga.webp",
+                  "alt": "Baba Yaga (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -271,9 +304,11 @@
               "medium": "Mixed media on UV print",
               "dimensions": "1000 × 700 mm",
               "summary": "The 'slit-mouthed woman' of Japanese folklore, a vengeful spirit mutilated by a jealous husband who stalks passers-by with her scissors.",
-              "source": "Iconic deck slide 24",
               "images": [
-                { "src": "media/cropped/iconic-folklore-kuchisake-onna.webp", "originalFilename": "IMG_5513.PNG", "alt": "Kuchisake-onna (detail) — from the Iconic series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false }
+                {
+                  "src": "media/cropped/iconic-folklore-kuchisake-onna.webp",
+                  "alt": "Kuchisake-onna (detail) — from the Iconic series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -283,7 +318,6 @@
               "medium": "Mixed media on UV print",
               "dimensions": "1000 × 700 mm",
               "summary": "The 'Weeping Woman' of Mexico and the Southwest who drowned her children and, denied the afterlife, wanders the rivers forever searching for them.",
-              "source": "Iconic deck slide 25",
               "images": []
             }
           ]
@@ -296,13 +330,10 @@
       "date": "2019–2021",
       "type": "series",
       "statement": "Bestiaire Mythique stages mythical creatures — the Adams and Eves of a new cosmogony. Through research in anthropology, literature and mythology, Anouti invents new races of hybrid beings, half-human and half-animal, borrowing from and reinventing monsters and creatures of Greek, Egyptian, Mesopotamian, Nordic and Chinese mythologies so that they people a contemporary collective imaginary whose roots are anchored in the past of civilizations. Each work passes through anthropological, historical and mythological research, then studio photography, digital painting and compositing; it is printed on a chosen support and sometimes reworked with paint, ink or gold leaf, remaining a unique, single edition.",
-      "statement_source": "English adaptation/translation of the artist's original FRENCH statement on Bestiaire deck slide 1. Wording is derived, not an approved English original — flag for the artist.",
-      "structure_note": "The deck contains one explicit divider, 'Hybrides' (slide 7), introducing the portrait busts (slide 8). The full-body named creatures (slides 2–6) have NO on-slide divider naming them 'Bestiaire'; that group label is inferred from the series title and the task framing. The 'I/II' suffixes (Anggitay I, Centaur I) and the 'Rd 03 / Rd 04' numbering imply further works (Anggitay II, Centaur II, Rd 01–02, etc.) that are NOT in this PDF; the deck is a selection, and absent works have not been invented.",
       "groups": [
         {
           "slug": "bestiaire",
           "title": "Bestiaire",
-          "title_note": "Group label inferred (see structure_note). These are the named full-body hybrid creatures.",
           "works": [
             {
               "slug": "kinnara",
@@ -312,9 +343,11 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A half-human, half-bird hybrid drawn from Indian mythology.",
-              "source": "Bestiaire deck slide 2 (left)",
               "images": [
-                { "src": "media/cropped/bestiaire-kinnara.webp", "originalFilename": "IMG_5482.PNG", "alt": "Kinnara — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-kinnara.webp",
+                  "alt": "Kinnara — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -325,9 +358,11 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A half-human, half-bird hybrid drawn from Russian mythology.",
-              "source": "Bestiaire deck slide 2 (right)",
               "images": [
-                { "src": "media/cropped/bestiaire-alconost.webp", "originalFilename": "IMG_5483.PNG", "alt": "Alconost — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "confirmed", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-alconost.webp",
+                  "alt": "Alconost — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -338,9 +373,11 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A centaur-like hybrid drawn from Philippine mythology.",
-              "source": "Bestiaire deck slide 3 (left)",
               "images": [
-                { "src": "media/cropped/bestiaire-anggitay-i.webp", "originalFilename": "IMG_5481.PNG", "alt": "Anggitay I — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-anggitay-i.webp",
+                  "alt": "Anggitay I — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -351,9 +388,11 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A centaur hybrid drawn from Greek mythology.",
-              "source": "Bestiaire deck slide 3 (right)",
               "images": [
-                { "src": "media/cropped/bestiaire-centaur-i.webp", "originalFilename": "IMG_5484.PNG", "alt": "Centaur I — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-centaur-i.webp",
+                  "alt": "Centaur I — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -364,9 +403,11 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A bovine-human hybrid drawn from Japanese folklore.",
-              "source": "Bestiaire deck slide 4 (left)",
               "images": [
-                { "src": "media/cropped/bestiaire-kudan-i.webp", "originalFilename": "IMG_5486.PNG", "alt": "Kudan I — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-kudan-i.webp",
+                  "alt": "Kudan I — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -377,23 +418,26 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A bovine-human hybrid drawn from Japanese folklore.",
-              "source": "Bestiaire deck slide 4 (right)",
               "images": [
-                { "src": "media/cropped/bestiaire-kudan-ii.webp", "originalFilename": "IMG_5485.PNG", "alt": "Kudan II — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-kudan-ii.webp",
+                  "alt": "Kudan II — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             },
             {
               "slug": "naga",
               "title": "Naga",
               "origin": "Hindu (Indian) mythology",
-              "origin_note": "Deck labels this 'Hindy mythology' (sic).",
               "date": "2019–2021",
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A serpent-human hybrid drawn from Hindu (Indian) mythology.",
-              "source": "Bestiaire deck slide 5 (left)",
               "images": [
-                { "src": "media/cropped/bestiaire-naga.webp", "originalFilename": "IMG_5488.PNG", "alt": "Naga — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-naga.webp",
+                  "alt": "Naga — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -404,9 +448,11 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A serpent-woman hybrid drawn from Turkish and Persian folklore.",
-              "source": "Bestiaire deck slide 5 (right)",
               "images": [
-                { "src": "media/cropped/bestiaire-shahmaran.webp", "originalFilename": "IMG_5487.PNG", "alt": "Shahmaran — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-shahmaran.webp",
+                  "alt": "Shahmaran — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -417,9 +463,11 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A human–praying-mantis hybrid.",
-              "source": "Bestiaire deck slide 6 (left). No cultural origin labelled in the source.",
               "images": [
-                { "src": "media/cropped/bestiaire-praying-mantis-i.webp", "originalFilename": "IMG_5490.PNG", "alt": "Praying Mantis I — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-praying-mantis-i.webp",
+                  "alt": "Praying Mantis I — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -430,9 +478,11 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A human–praying-mantis hybrid.",
-              "source": "Bestiaire deck slide 6 (right). No cultural origin labelled in the source.",
               "images": [
-                { "src": "media/cropped/bestiaire-praying-mantis-ii.webp", "originalFilename": "IMG_5489.PNG", "alt": "Praying Mantis II — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-praying-mantis-ii.webp",
+                  "alt": "Praying Mantis II — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             }
           ]
@@ -440,7 +490,6 @@
         {
           "slug": "hybrides",
           "title": "Hybrides",
-          "title_note": "The only explicitly named division in the Bestiaire deck (divider slide 7, with a Gilbert Durand epigraph). These are portrait busts of the hybrid 'primordial divinities'.",
           "works": [
             {
               "slug": "rd-03",
@@ -449,10 +498,11 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A portrait bust from the Hybrides group — a hybrid, primordial divinity transcending cultures and time.",
-              "title_note": "Working label from the deck ('Rd 03'); a definitive title may exist. The numbering implies Rd 01–02 exist but are not in this PDF.",
-              "source": "Bestiaire deck slide 8 (left)",
               "images": [
-                { "src": "media/cropped/bestiaire-hybrides-rd-03.webp", "originalFilename": "IMG_5491.PNG", "alt": "Hybride portrait (Rd 03) — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-hybrides-rd-03.webp",
+                  "alt": "Hybride portrait (Rd 03) — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             },
             {
@@ -462,10 +512,11 @@
               "medium": "Digital painting and mixed media; unique print (occasionally reworked with paint, ink or gold leaf)",
               "dimensions": null,
               "summary": "A portrait bust from the Hybrides group — a hybrid, primordial divinity transcending cultures and time.",
-              "title_note": "Working label from the deck ('Rd 04'); a definitive title may exist.",
-              "source": "Bestiaire deck slide 8 (right)",
               "images": [
-                { "src": "media/cropped/bestiaire-hybrides-rd-04.webp", "originalFilename": "IMG_5492.PNG", "alt": "Hybride portrait (Rd 04) — from the Bestiaire Mythique series by Bassam Anouti", "mappingConfidence": "probable", "chrome": false }
+                {
+                  "src": "media/cropped/bestiaire-hybrides-rd-04.webp",
+                  "alt": "Hybride portrait (Rd 04) — from the Bestiaire Mythique series by Bassam Anouti"
+                }
               ]
             }
           ]
@@ -473,43 +524,12 @@
       ]
     }
   ],
-
-  "exhibitions": [
-    {
-      "title": "Mémoire Collective",
-      "year": "2022",
-      "venue": "Centre Paris Anim' Mercœur, Paris",
-      "location": "Paris, France",
-      "description": "Solo exhibition presented as part of a cultural festival celebrating Lebanese heritage; a body of small mixed-media paintings (acrylic, ink and gold leaf) blending pop art and contemporary styles, depicting iconic figures of 1980s Lebanon against backdrops of Islamic and Christian art motifs. Reported as covered by L'Orient-Le Jour.",
-      "verified": false,
-      "source_note": "Prior site only (root index.html). NOT mentioned in any of the three source PDFs and NOT independently confirmed. Has specific, checkable detail (venue + L'Orient-Le Jour coverage). Flagged for Bassam's confirmation."
-    },
-    {
-      "title": "Visual Poetry",
-      "year": "2022",
-      "venue": "International online group exhibition",
-      "location": null,
-      "description": "Digital artworks responding to lines of a poem with visual interpretations, exhibited alongside artists worldwide (e.g. 'I Am an Eagle Playing with the Wind', 'I Am a Deer Standing Away in the Dusk').",
-      "verified": false,
-      "source_note": "Prior site only (root index.html). NOT mentioned in any source PDF and NOT independently confirmed. Vague (no organiser, dates or venue). Weaker than Mémoire Collective; kept as unverified. Consider dropping if Bassam cannot confirm. Flagged for confirmation."
-    }
-  ],
-  "exhibitions_note": "Exhibitions contain only real exhibitions. Iconic and Bestiaire Mythique are series (see 'series') and are deliberately NOT listed here. None of the three PDFs reference any exhibition, so both entries rest solely on the prior site and require the artist's confirmation.",
-
+  "exhibitions": [],
+  "exhibitions_note": "No exhibition is published publicly, and 'Exhibitions' is not part of the public navigation. Iconic and Bestiaire Mythique are series (see 'series'), not exhibitions.",
   "contact": {
-    "email": "contact@bassamanouti.com",
-    "instagram": null,
-    "artsy": null,
-    "phone": null,
-    "location": "Beirut, Lebanon",
-    "email_note": "Carried over from the prior site (root index.html footer mailto). Not independently confirmed — flagged for confirmation.",
-    "location_note": "Beirut is the artist's stated base (bio: 'a cultural and multidisciplinary artist from Beirut, Lebanon'). No studio address or gallery representation is available in the sources.",
-    "needs_confirmation": [
-      "Email contact@bassamanouti.com — confirm this is current and correct.",
-      "Instagram handle — none present in sources (prior site used a placeholder '#'); provide if one exists.",
-      "Artsy profile URL — none present in sources (prior site used a placeholder '#'); provide if one exists.",
-      "Phone number — none present in any source.",
-      "Studio / precise location and any gallery representation — only 'Beirut' (base) is supported; no address or representation found."
-    ]
+    "email": "Anoutibassam@gmail.com",
+    "instagram": "https://www.instagram.com/bassamanouti/",
+    "instagram_handle": "@bassamanouti",
+    "location": "Beirut, Lebanon"
   }
 }

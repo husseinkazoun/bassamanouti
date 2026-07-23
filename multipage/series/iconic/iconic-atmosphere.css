@@ -1,0 +1,1182 @@
+.page-series--atmosphere {
+  --iconic-ground: #aaa098;
+  --iconic-text: #29251f;
+  --iconic-text-soft: #4f473f;
+  --iconic-quiet: #6c6158;
+  --iconic-accent: #6d4e25;
+  background: var(--iconic-ground);
+  color: var(--iconic-text);
+}
+
+.page-series--atmosphere .site-nav.is-scrolled {
+  background: rgba(170, 160, 152, 0.88);
+}
+
+.iconic-atmosphere-hero {
+  --mx: 0px;
+  --my: 0px;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--iconic-ground);
+}
+
+.iconic-atmosphere-field {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+}
+
+.iconic-atmosphere-field::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Frame the figure: hold atmosphere on the copy side, keep the art zone readable. */
+  background:
+    linear-gradient(90deg, rgba(170, 160, 152, 0.22) 0 18%, transparent 36%, transparent 82%, rgba(170, 160, 152, 0.14) 100%),
+    linear-gradient(180deg, rgba(170, 160, 152, 0.42), transparent 14%, transparent 84%, rgba(170, 160, 152, 0.42));
+  pointer-events: none;
+}
+
+.iconic-atmosphere-field img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.88;
+  transform: scale(1.035) translate3d(calc(var(--mx) * -0.08), calc(var(--my) * -0.08), 0);
+  transition: transform 700ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.iconic-atmosphere-art {
+  position: absolute;
+  inset: 0 0 0 29%;
+  z-index: -1;
+  margin: 0;
+  overflow: hidden;
+  /* Single soft left dissolve — solid core arrives quickly so the face reads. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.55) 3%, #000 10%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.55) 3%, #000 10%, #000 100%);
+}
+
+.iconic-atmosphere-art::after {
+  display: none;
+}
+
+.iconic-atmosphere-art img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 51% center;
+  filter: saturate(0.96) contrast(0.985);
+  transform: scale(1.02) translate3d(calc(var(--mx) * 0.08), calc(var(--my) * 0.08), 0);
+  transition: transform 800ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.iconic-atmosphere-copy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Keep the title in the atmosphere band; stop short of the face core. */
+  width: min(36rem, calc(28% - var(--gutter)));
+  max-width: 36rem;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(8.5rem, 16vh, 12rem) 0 clamp(3.2rem, 7vh, 5.5rem) var(--gutter);
+}
+
+.iconic-atmosphere-index,
+.iconic-atmosphere-groups,
+.iconic-atmosphere-caption,
+.iconic-atmosphere-scroll {
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-style: normal;
+  font-weight: 200;
+  letter-spacing: 0.24em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.iconic-atmosphere-index {
+  margin: 0 0 1.35rem;
+  color: var(--iconic-accent);
+}
+
+.iconic-atmosphere-copy h1 {
+  margin: 0;
+  color: var(--iconic-text);
+  font-family: var(--serif);
+  font-size: clamp(5.3rem, 10vw, 10.5rem);
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: -0.055em;
+  line-height: 0.72;
+}
+
+.iconic-atmosphere-lede {
+  max-width: 31rem;
+  margin: clamp(2.3rem, 5vh, 4rem) 0 0;
+  color: var(--iconic-text-soft);
+  font-family: var(--sans);
+  font-size: clamp(0.92rem, 1.15vw, 1.08rem);
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.iconic-atmosphere-groups {
+  margin: 1.15rem 0 0;
+  color: var(--iconic-quiet);
+}
+
+.iconic-atmosphere-scroll {
+  align-self: flex-start;
+  margin-top: clamp(2rem, 4vh, 3.2rem);
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(109, 78, 37, 0.7);
+  color: var(--iconic-text);
+  transition: border-color 250ms ease, color 250ms ease;
+}
+
+.iconic-atmosphere-scroll span {
+  display: inline-block;
+  margin-left: 0.65rem;
+}
+
+.iconic-atmosphere-scroll:hover {
+  border-color: var(--iconic-text);
+  color: var(--iconic-accent);
+}
+
+.iconic-atmosphere-caption {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(2rem, 4vh, 3.25rem);
+  z-index: 3;
+  margin: 0;
+  color: rgba(41, 37, 31, 0.58);
+  writing-mode: vertical-rl;
+}
+
+#iconic-archive {
+  scroll-margin-top: 5rem;
+}
+
+/* Production archive: each work lives inside its chapter's atmosphere. */
+.page-series--atmosphere .series-content {
+  width: 100%;
+  max-width: none;
+  background: var(--iconic-ground);
+}
+
+.page-series--atmosphere .plate-series-intro {
+  position: relative;
+  isolation: isolate;
+  min-height: 74vh;
+  min-height: 74svh;
+  align-items: center;
+  padding-block: clamp(7rem, 13vw, 13rem);
+  overflow: hidden;
+  border: 0;
+  background:
+    radial-gradient(circle at 78% 28%, rgba(89, 105, 116, 0.18), transparent 26rem),
+    radial-gradient(circle at 22% 76%, rgba(129, 73, 66, 0.12), transparent 31rem),
+    linear-gradient(180deg, #aaa098 0%, #a89f97 72%, #a69d95 100%);
+}
+
+.page-series--atmosphere .plate-series-intro::before {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  z-index: -1;
+  background: url('../../assets/atmosphere/iconic-semiramis-atmosphere-concept-v1.webp') center / cover no-repeat;
+  opacity: 0.16;
+  filter: blur(2.8rem) saturate(0.7);
+  transform: scale(1.08);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 20%, #000 72%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 20%, #000 72%, transparent);
+}
+
+.page-series--atmosphere .plate-series-intro__aside,
+.page-series--atmosphere .plate-series-intro__copy {
+  position: relative;
+  z-index: 1;
+}
+
+.page-series--atmosphere .plate-series-intro__copy p {
+  max-width: 58rem;
+  color: rgba(41, 37, 31, 0.86);
+  font-family: var(--sans);
+  font-size: clamp(1.15rem, 2vw, 1.75rem);
+  font-weight: 300;
+  letter-spacing: -0.012em;
+  line-height: 1.65;
+}
+
+.page-series--atmosphere .chapter-nav {
+  border-color: rgba(41, 37, 31, 0.22);
+}
+
+.page-series--atmosphere .chapter-nav a {
+  border-color: rgba(41, 37, 31, 0.14);
+}
+
+.plate-chapter--history {
+  --chapter-base: #a79e96;
+  --chapter-base-rgb: 167, 158, 150;
+  --chapter-ink: #29241f;
+  --chapter-soft: #514841;
+  --chapter-bloom: rgba(132, 75, 70, 0.24);
+  --chapter-cool: rgba(79, 102, 117, 0.22);
+}
+
+.plate-chapter--mythology {
+  --chapter-base: #a6a096;
+  --chapter-base-rgb: 166, 160, 150;
+  --chapter-ink: #282621;
+  --chapter-soft: #4c4940;
+  --chapter-bloom: rgba(143, 121, 66, 0.2);
+  --chapter-cool: rgba(54, 103, 100, 0.24);
+}
+
+.plate-chapter--folklore {
+  --chapter-base: #9f9a9b;
+  --chapter-base-rgb: 159, 154, 155;
+  --chapter-ink: #292529;
+  --chapter-soft: #504a50;
+  --chapter-bloom: rgba(104, 70, 103, 0.26);
+  --chapter-cool: rgba(70, 91, 101, 0.23);
+}
+
+.page-series--atmosphere .plate-chapter {
+  position: relative;
+  background: var(--chapter-base);
+}
+
+.page-series--atmosphere .plate-chapter__header {
+  position: relative;
+  isolation: isolate;
+  min-height: 52vh;
+  min-height: 52svh;
+  align-content: end;
+  overflow: hidden;
+  border: 0;
+  color: var(--chapter-ink);
+  background:
+    radial-gradient(circle at 77% 35%, var(--chapter-cool), transparent 28rem),
+    radial-gradient(circle at 20% 74%, var(--chapter-bloom), transparent 31rem),
+    var(--chapter-base);
+}
+
+.page-series--atmosphere .plate-chapter__header::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -1px;
+  z-index: -1;
+  height: 30%;
+  background: linear-gradient(180deg, transparent, var(--chapter-base));
+  pointer-events: none;
+}
+
+.page-series--atmosphere .plate-chapter__header h2 {
+  color: var(--chapter-ink);
+  font-size: clamp(5rem, 12vw, 12rem);
+  font-style: normal;
+  font-weight: 300;
+}
+
+.page-series--atmosphere .plate-chapter__header > span,
+.page-series--atmosphere .plate-chapter__header .route-number {
+  color: var(--chapter-soft);
+}
+
+.iconic-scene {
+  --scene-accent: var(--chapter-bloom);
+  --scene-cool: var(--chapter-cool);
+  --scene-ink: var(--chapter-ink);
+  --scene-soft: var(--chapter-soft);
+  --scene-focus-x: 58%;
+  --scene-focus-y: 48%;
+  position: relative;
+  isolation: isolate;
+  min-height: 86vh;
+  min-height: 86svh;
+  overflow: hidden;
+  color: var(--scene-ink);
+  background:
+    radial-gradient(ellipse 58% 54% at 82% 42%, var(--scene-accent), transparent 74%),
+    radial-gradient(ellipse 52% 58% at 18% 76%, var(--scene-cool), transparent 76%),
+    var(--chapter-base);
+}
+
+.iconic-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(ellipse 44% 52% at var(--scene-focus-x) var(--scene-focus-y), var(--scene-cool), transparent 78%),
+    radial-gradient(ellipse 48% 44% at calc(var(--scene-focus-x) + 12%) calc(var(--scene-focus-y) + 8%), var(--scene-accent), transparent 80%);
+  opacity: 0.86;
+  pointer-events: none;
+}
+
+.iconic-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, var(--chapter-base) 0, transparent 12%, transparent 85%, var(--chapter-base) 100%),
+    radial-gradient(ellipse at 50% 50%, transparent 42%, rgba(167, 158, 150, 0.18) 100%);
+  pointer-events: none;
+}
+
+.iconic-scene__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  width: min(100%, var(--max));
+  min-height: inherit;
+  margin: 0 auto;
+  padding: clamp(6.5rem, 10vw, 10rem) var(--gutter);
+}
+
+.iconic-scene__media {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-area: 1 / 1;
+  align-items: center;
+  min-width: 0;
+}
+
+.iconic-scene__media::before {
+  content: '';
+  position: absolute;
+  inset: -14%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, var(--scene-cool), transparent 68%);
+  filter: blur(2.2rem);
+  opacity: 0.58;
+  pointer-events: none;
+}
+
+.iconic-scene__figure {
+  grid-area: 1 / 1;
+  aspect-ratio: 1.68 / 1;
+  margin: 0;
+  overflow: visible;
+  background: transparent;
+  /* Mask lives on the img — wrapper overflow:visible + child transforms
+     left hard rectangular edges when the mask sat here. */
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.iconic-scene__figure::after {
+  display: none;
+}
+
+.iconic-scene__figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  opacity: 1;
+  border-radius: 0;
+  /* Cover fills the figure so the feather lands on real pixels, not letterbox.
+     Scene focus vars steer the crop; override object-fit per work if needed. */
+  object-fit: cover;
+  object-position: var(--scene-focus-x) var(--scene-focus-y);
+  filter: saturate(0.96) contrast(0.99);
+  /* No transform scale: scaled bitmaps escape the mask and show hard edges. */
+  transform: none;
+  transform-origin: var(--scene-focus-x) var(--scene-focus-y);
+  transition: filter 500ms ease;
+  /*
+   * Approved oval dissolve on the image pixels (pilot: Semiramis, Seth, Messalina).
+   * Solid core holds faces/jewelry; outer ~15–25% band fades into the climate.
+   */
+  -webkit-mask-image: radial-gradient(
+    ellipse 50% 50% at 50% 50%,
+    #000 0 52%,
+    rgba(0, 0, 0, 0.92) 64%,
+    rgba(0, 0, 0, 0.55) 76%,
+    rgba(0, 0, 0, 0.18) 88%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 50% 50% at 50% 50%,
+    #000 0 52%,
+    rgba(0, 0, 0, 0.92) 64%,
+    rgba(0, 0, 0, 0.55) 76%,
+    rgba(0, 0, 0, 0.18) 88%,
+    transparent 100%
+  );
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.iconic-scene--double .iconic-scene__figure--1 {
+  width: 82%;
+  justify-self: start;
+  transform: translate(-3%, -9%);
+}
+
+.iconic-scene--double .iconic-scene__figure--2 {
+  width: 82%;
+  justify-self: end;
+  transform: translate(3%, 12%);
+}
+
+.iconic-scene__copy {
+  position: relative;
+  z-index: 3;
+  align-self: center;
+  max-width: 30rem;
+  padding: clamp(1rem, 3vw, 2.5rem) 0;
+}
+
+/* A soft ground carried behind the copy — opaque where the text sits, then
+   feathered into the artwork so the words never fall on a busy focal detail.
+   Sits above the fragment (image z-index 1) but below the copy text (z-index 3). */
+.iconic-scene__copy::before {
+  content: '';
+  position: absolute;
+  inset: -13% -14% -15% -46%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    var(--chapter-base) 0,
+    rgba(var(--chapter-base-rgb), 0.98) 48%,
+    rgba(var(--chapter-base-rgb), 0.68) 73%,
+    rgba(var(--chapter-base-rgb), 0) 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 10%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 10%, #000 91%, transparent 100%);
+}
+
+.iconic-scene--left .iconic-scene__copy::before {
+  inset: -13% -46% -15% -14%;
+  background: linear-gradient(270deg,
+    var(--chapter-base) 0,
+    rgba(var(--chapter-base-rgb), 0.98) 48%,
+    rgba(var(--chapter-base-rgb), 0.68) 73%,
+    rgba(var(--chapter-base-rgb), 0) 100%);
+}
+
+.iconic-scene--pending .iconic-scene__copy::before {
+  display: none;
+}
+
+.iconic-scene__index,
+.iconic-scene__meta,
+.iconic-scene__note {
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0.19em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.iconic-scene__index {
+  margin: 0 0 1.3rem;
+  color: var(--chapter-soft);
+}
+
+.iconic-scene__copy h3 {
+  margin: 0;
+  color: var(--scene-ink);
+  font-family: var(--serif);
+  font-size: clamp(3.1rem, 5.5vw, 6.2rem);
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: -0.048em;
+  line-height: 0.84;
+}
+
+.iconic-scene__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.65rem;
+  margin: 1.65rem 0 0;
+  color: rgba(76, 64, 48, 0.9);
+}
+
+.iconic-scene__summary {
+  margin: 1.8rem 0 0;
+  color: var(--scene-soft);
+  font-family: var(--sans);
+  font-size: clamp(0.95rem, 1.25vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.iconic-scene__note {
+  display: block;
+  margin-top: 1.7rem;
+  color: rgba(80, 70, 61, 0.72);
+}
+
+/* Artwork-specific atmosphere. These fields borrow a restrained pair of edge
+   colors from each approved crop; no artwork is duplicated in the background. */
+#semiramis-and-ninyas {
+  --scene-accent: rgba(139, 73, 73, 0.34);
+  --scene-cool: rgba(91, 116, 132, 0.36);
+  --scene-ink: #30241f;
+  --scene-soft: #55443e;
+  /* Archive appearance differs from the hero: alternate crop + shifted focus/scale. */
+  --scene-focus-x: 42%;
+  --scene-focus-y: 44%;
+}
+
+@media (min-width: 921px) {
+  #semiramis-and-ninyas.iconic-scene--right .iconic-scene__media {
+    grid-column: 4 / 13;
+  }
+}
+
+#agrippina-and-nero {
+  --scene-accent: rgba(143, 90, 103, 0.3);
+  --scene-cool: rgba(112, 123, 132, 0.28);
+  --scene-ink: #35282a;
+  --scene-soft: #59494a;
+}
+
+#messalina-and-britannicus {
+  --scene-accent: rgba(128, 84, 91, 0.3);
+  --scene-cool: rgba(88, 111, 126, 0.28);
+  --scene-ink: #32262a;
+  --scene-soft: #58484d;
+}
+
+#rodrigo-and-lucrezia-borgia {
+  --scene-accent: rgba(122, 92, 105, 0.24);
+  --scene-cool: rgba(101, 128, 151, 0.5);
+  --scene-ink: #263848;
+  --scene-soft: #43596a;
+  --scene-focus-x: 55%;
+  --scene-focus-y: 42%;
+}
+
+#al-khayzuran {
+  --scene-accent: rgba(142, 93, 61, 0.34);
+  --scene-cool: rgba(72, 106, 115, 0.28);
+  --scene-ink: #33271f;
+  --scene-soft: #5a493c;
+}
+
+#sitt-al-mulk-and-al-hakim {
+  --scene-accent: rgba(117, 75, 88, 0.28);
+  --scene-cool: rgba(92, 123, 151, 0.5);
+  --scene-ink: #25384a;
+  --scene-soft: #41596c;
+  --scene-focus-x: 62%;
+  --scene-focus-y: 48%;
+}
+
+#shajara-al-durr-and-izz-ad-din-aybak {
+  --scene-accent: rgba(151, 111, 55, 0.32);
+  --scene-cool: rgba(72, 110, 134, 0.42);
+  --scene-ink: #283844;
+  --scene-soft: #465a66;
+  --scene-focus-x: 58%;
+}
+
+#seth-and-horus {
+  --scene-accent: rgba(152, 90, 54, 0.34);
+  --scene-cool: rgba(48, 105, 104, 0.42);
+  --scene-ink: #243c39;
+  --scene-soft: #405c57;
+  --scene-focus-x: 48%;
+  --scene-focus-y: 46%;
+}
+
+/* Keep Seth faces clear of the copy column without special cards or radius. */
+@media (min-width: 921px) {
+  #seth-and-horus.iconic-scene--left .iconic-scene__media {
+    grid-column: 1 / 8;
+  }
+
+  #seth-and-horus.iconic-scene--left .iconic-scene__copy {
+    grid-column: 8 / 13;
+  }
+}
+
+#tantalus-and-pelops,
+#phaedra-and-hippolytus,
+#jocasta-and-oedipus {
+  --scene-accent: rgba(144, 112, 60, 0.3);
+  --scene-cool: rgba(62, 108, 106, 0.36);
+  --scene-ink: #2d3832;
+  --scene-soft: #4d5a53;
+}
+
+#baba-yaga,
+#kuchisake-onna {
+  --scene-accent: rgba(111, 73, 111, 0.34);
+  --scene-cool: rgba(66, 93, 108, 0.36);
+  --scene-ink: #302a36;
+  --scene-soft: #514a58;
+}
+
+.iconic-scene--right .iconic-scene__media {
+  grid-column: 5 / 13;
+}
+
+.iconic-scene--right .iconic-scene__copy {
+  grid-column: 1 / 6;
+  grid-row: 1;
+}
+
+.iconic-scene--right::after {
+  background:
+    linear-gradient(90deg, rgba(var(--chapter-base-rgb), 0.78) 0, transparent 48%),
+    linear-gradient(180deg, var(--chapter-base) 0, transparent 12%, transparent 85%, var(--chapter-base) 100%);
+}
+
+.iconic-scene--left .iconic-scene__media {
+  grid-column: 1 / 9;
+}
+
+.iconic-scene--left .iconic-scene__copy {
+  grid-column: 8 / 13;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.iconic-scene--left::after {
+  background:
+    linear-gradient(270deg, rgba(var(--chapter-base-rgb), 0.8) 0, transparent 49%),
+    linear-gradient(180deg, var(--chapter-base) 0, transparent 12%, transparent 85%, var(--chapter-base) 100%);
+}
+
+.iconic-scene--paired .iconic-scene__media {
+  grid-column: 4 / 13;
+}
+
+.iconic-scene--paired .iconic-scene__copy {
+  grid-column: 1 / 5;
+  grid-row: 1;
+}
+
+.iconic-scene--paired::after {
+  background:
+    linear-gradient(90deg, rgba(var(--chapter-base-rgb), 0.84) 0, transparent 44%),
+    linear-gradient(180deg, var(--chapter-base) 0, transparent 12%, transparent 85%, var(--chapter-base) 100%);
+}
+
+.iconic-scene--center .iconic-scene__media {
+  grid-column: 2 / 12;
+}
+
+.iconic-scene--center .iconic-scene__copy {
+  grid-column: 1 / 6;
+  grid-row: 1;
+  align-self: end;
+  padding-bottom: clamp(3rem, 7vw, 7rem);
+}
+
+.iconic-scene--center::after {
+  background:
+    linear-gradient(90deg, rgba(var(--chapter-base-rgb), 0.78) 0, transparent 50%),
+    linear-gradient(180deg, var(--chapter-base) 0, transparent 12%, transparent 75%, var(--chapter-base) 100%);
+}
+
+/*
+ * Detach from a following text-only entry without washing Messalina (etc.) copy.
+ * Scene ::after must stay under .iconic-scene__inner — raising it to z-index:2
+ * covered title/summary/meta/medium (worst on mobile where copy sits at the bottom).
+ * Fade the artwork column only; pending::before continues the handoff below.
+ */
+.iconic-scene:has(+ .iconic-scene--pending)::after {
+  z-index: -2;
+  background: linear-gradient(180deg, transparent 0, transparent 78%, var(--chapter-base) 100%);
+}
+
+.iconic-scene:has(+ .iconic-scene--pending) .iconic-scene__media::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(4.5rem, 26%, 13rem);
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0,
+    rgba(var(--chapter-base-rgb), 0.4) 52%,
+    var(--chapter-base) 100%
+  );
+}
+
+.iconic-scene--pending {
+  position: relative;
+  z-index: 2;
+  min-height: auto;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(5.5rem, 12vh, 9.5rem);
+  /* Solid ground only — no atmospheric blooms that read as leftover artwork. */
+  background: var(--chapter-base);
+}
+
+.iconic-scene--pending::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -4.5rem;
+  height: 4.5rem;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, var(--chapter-base));
+}
+
+.iconic-scene--pending::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: clamp(3.5rem, 10vh, 6.5rem);
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, var(--chapter-base) 42%, var(--chapter-base));
+}
+
+/* Keep the following artwork from reading as this text-only entry's image. */
+.iconic-scene--pending + .iconic-scene {
+  padding-top: clamp(1rem, 3vh, 2.5rem);
+}
+
+.iconic-scene--pending + .iconic-scene::after {
+  /* Under the composition — top ground must not veil the next scene's copy. */
+  z-index: -2;
+  background:
+    linear-gradient(180deg, var(--chapter-base) 0, transparent 22%),
+    linear-gradient(180deg, var(--chapter-base) 0, transparent 12%, transparent 85%, var(--chapter-base) 100%);
+}
+
+.iconic-scene--pending .iconic-scene__inner {
+  min-height: auto;
+  padding-block: clamp(1.5rem, 4vh, 3rem);
+}
+
+.iconic-scene--pending .iconic-scene__copy {
+  grid-column: 4 / 11;
+  max-width: 44rem;
+}
+
+.iconic-scene--pending .iconic-scene__copy h3 {
+  font-size: clamp(3rem, 5.5vw, 6rem);
+}
+
+.page-series--atmosphere .plate-study-end {
+  border: 0;
+  background: linear-gradient(180deg, #9f9a9b, #a89f97);
+}
+
+/* Persistent chapter progress — a fine vertical rail, secondary to the artwork. */
+.chapter-rail {
+  position: fixed;
+  left: clamp(1.4rem, 3vw, 3rem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  opacity: 0;
+  /* visibility:hidden also removes the links from the keyboard tab order while
+     the rail is hidden, so focus never lands on an invisible control (WCAG 2.4.7). */
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 600ms ease, visibility 0s linear 600ms;
+}
+
+.chapter-rail.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 600ms ease, visibility 0s;
+}
+
+.chapter-rail ol {
+  position: relative;
+  display: grid;
+  gap: clamp(1.35rem, 3vh, 2.3rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chapter-rail ol::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 5px;
+  bottom: 5px;
+  width: 1px;
+  background: rgba(41, 37, 31, 0.16);
+}
+
+.chapter-rail li {
+  margin: 0;
+}
+
+.chapter-rail a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--iconic-quiet);
+}
+
+.chapter-rail__num {
+  display: none;
+}
+
+.chapter-rail__tick {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(41, 37, 31, 0.42);
+  background: var(--iconic-ground);
+  transition: background 300ms ease, border-color 300ms ease, transform 300ms ease;
+}
+
+.chapter-rail__label {
+  position: absolute;
+  right: calc(100% + 0.75rem);
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-family: var(--sans);
+  font-size: 0.52rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--iconic-text);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.chapter-rail a:hover .chapter-rail__label,
+.chapter-rail a:focus-visible .chapter-rail__label,
+.chapter-rail a.is-active .chapter-rail__label {
+  opacity: 1;
+}
+
+.chapter-rail a.is-active {
+  color: var(--iconic-text);
+}
+
+.chapter-rail a.is-active .chapter-rail__tick {
+  background: var(--iconic-accent);
+  border-color: var(--iconic-accent);
+  transform: scale(1.18);
+}
+
+@media (max-width: 1200px) and (min-width: 921px) {
+  .iconic-atmosphere-art {
+    inset: 0 0 0 28%;
+  }
+
+  .iconic-atmosphere-art img {
+    object-position: 52% center;
+  }
+
+  .iconic-atmosphere-copy {
+    width: min(32rem, calc(27% - var(--gutter)));
+  }
+
+  .iconic-atmosphere-copy h1 {
+    font-size: clamp(4.6rem, 8.2vw, 7.8rem);
+  }
+}
+
+@media (max-width: 920px) {
+  .iconic-atmosphere-hero {
+    display: grid;
+    grid-template-rows: minmax(34rem, 66vh) auto;
+    grid-template-rows: minmax(34rem, 66svh) auto;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .iconic-atmosphere-field {
+    bottom: auto;
+    height: 74vh;
+    height: 74svh;
+  }
+
+  .iconic-atmosphere-field::after {
+    background:
+      linear-gradient(180deg, rgba(170, 160, 152, 0.28), transparent 15%, transparent 64%, var(--iconic-ground) 96%),
+      linear-gradient(90deg, rgba(170, 160, 152, 0.12), transparent 58%, rgba(170, 160, 152, 0.16));
+  }
+
+  .iconic-atmosphere-art {
+    inset: 4.5rem 0 auto 12%;
+    height: 63vh;
+    height: 63svh;
+    -webkit-mask-image: linear-gradient(180deg, #000 0 72%, rgba(0, 0, 0, 0.7) 84%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0 72%, rgba(0, 0, 0, 0.7) 84%, transparent 100%);
+  }
+
+  .iconic-atmosphere-art img {
+    object-position: 51% 46%;
+  }
+
+  .iconic-atmosphere-copy {
+    grid-row: 2;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: none;
+    min-height: auto;
+    padding: 1rem var(--gutter) 5rem;
+  }
+
+  .iconic-atmosphere-copy h1 {
+    font-size: clamp(4.6rem, 17vw, 8rem);
+  }
+
+  .iconic-atmosphere-lede {
+    max-width: 37rem;
+  }
+
+  .iconic-atmosphere-caption {
+    display: none;
+  }
+
+  /* Compact chapter navigator — pinned into the top chrome zone directly beneath
+     the fixed nav, so it never overlays the artwork or its description (both of
+     which sit lower in each scene). The nav is always in its scrolled 4.5rem
+     state by the time any chapter is in view. */
+  .chapter-rail {
+    left: 50%;
+    right: auto;
+    top: calc(4.5rem + 0.5rem);
+    bottom: auto;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100vw - 1.4rem);
+  }
+
+  .chapter-rail ol {
+    grid-auto-flow: column;
+    gap: 0;
+    align-items: center;
+    padding: 0.4rem;
+    border-radius: 999px;
+    background: rgba(170, 160, 152, 0.86);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0.5rem 1.4rem rgba(41, 37, 31, 0.16);
+  }
+
+  .chapter-rail ol::before {
+    display: none;
+  }
+
+  .chapter-rail a {
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    color: var(--iconic-quiet);
+  }
+
+  .chapter-rail__tick {
+    width: 6px;
+    height: 6px;
+  }
+
+  .chapter-rail__label {
+    position: static;
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 0.5rem;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    color: inherit;
+    opacity: 1;
+  }
+
+  .chapter-rail a.is-active {
+    color: var(--iconic-text);
+  }
+
+  .page-series--atmosphere .plate-series-intro {
+    min-height: auto;
+  }
+
+  .page-series--atmosphere .plate-chapter__header {
+    min-height: 52vh;
+    min-height: 52svh;
+  }
+
+  .iconic-scene {
+    min-height: auto;
+  }
+
+  .iconic-scene__inner {
+    grid-template-columns: 1fr;
+    align-content: center;
+    min-height: 92vh;
+    min-height: 92svh;
+    gap: clamp(1rem, 4vw, 3rem);
+    padding-block: clamp(6rem, 12vw, 9rem);
+  }
+
+  .iconic-scene--right .iconic-scene__media,
+  .iconic-scene--left .iconic-scene__media,
+  .iconic-scene--paired .iconic-scene__media,
+  .iconic-scene--center .iconic-scene__media {
+    grid-column: 1;
+    grid-row: 1;
+    width: min(100%, 52rem);
+    justify-self: center;
+  }
+
+  .iconic-scene--right .iconic-scene__copy,
+  .iconic-scene--left .iconic-scene__copy,
+  .iconic-scene--paired .iconic-scene__copy,
+  .iconic-scene--center .iconic-scene__copy,
+  .iconic-scene--pending .iconic-scene__copy {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+    align-self: start;
+    max-width: 38rem;
+    padding: 0;
+  }
+
+  .iconic-scene--pending .iconic-scene__copy {
+    grid-row: 1;
+  }
+
+  .iconic-scene--pending .iconic-scene__inner {
+    min-height: auto;
+  }
+
+  .iconic-scene:has(+ .iconic-scene--pending)::after {
+    background: linear-gradient(180deg, transparent 0, transparent 82%, var(--chapter-base) 100%);
+  }
+
+  .iconic-scene:has(+ .iconic-scene--pending) .iconic-scene__media::after {
+    height: clamp(3.5rem, 22%, 9rem);
+  }
+
+  .iconic-scene::after,
+  .iconic-scene--right::after,
+  .iconic-scene--left::after,
+  .iconic-scene--paired::after,
+  .iconic-scene--center::after {
+    background: linear-gradient(180deg, var(--chapter-base) 0, transparent 9%, transparent 65%, var(--chapter-base) 92%);
+  }
+}
+
+@media (max-width: 680px) {
+  .iconic-atmosphere-hero {
+    grid-template-rows: minmax(27rem, 61vh) auto;
+    grid-template-rows: minmax(27rem, 61svh) auto;
+  }
+
+  .iconic-atmosphere-field {
+    height: 69vh;
+    height: 69svh;
+  }
+
+  .iconic-atmosphere-art {
+    inset: 4.5rem -8% auto 0;
+    height: 56vh;
+    height: 56svh;
+  }
+
+  .iconic-atmosphere-art img {
+    object-position: 52% center;
+  }
+
+  .iconic-atmosphere-copy {
+    padding-top: 0;
+  }
+
+  .iconic-atmosphere-copy h1 {
+    font-size: clamp(4.2rem, 21vw, 6.7rem);
+    line-height: 0.76;
+  }
+
+  .iconic-atmosphere-groups {
+    line-height: 2;
+  }
+
+  .page-series--atmosphere .plate-series-intro {
+    padding-block: 6rem;
+  }
+
+  .page-series--atmosphere .plate-series-intro__copy p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .page-series--atmosphere .plate-chapter__header {
+    min-height: 44vh;
+    min-height: 44svh;
+    padding-block: 6rem 4rem;
+  }
+
+  .page-series--atmosphere .plate-chapter__header h2 {
+    font-size: clamp(4.5rem, 22vw, 7rem);
+  }
+
+  .iconic-scene__inner {
+    min-height: auto;
+    padding-block: 5rem 6.5rem;
+  }
+
+  .iconic-scene__media {
+    width: calc(100% + (var(--gutter) * 1.2)) !important;
+    margin-inline: calc(var(--gutter) * -0.6);
+  }
+
+  .iconic-scene--double .iconic-scene__figure--1,
+  .iconic-scene--double .iconic-scene__figure--2 {
+    width: 92%;
+  }
+
+  .iconic-scene__copy h3 {
+    font-size: clamp(3.2rem, 16vw, 5.4rem);
+  }
+
+  .iconic-scene__summary {
+    font-size: 0.93rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iconic-atmosphere-field img,
+  .iconic-atmosphere-art img,
+  .iconic-scene__figure img {
+    transform: none;
+    transition: none;
+  }
+}

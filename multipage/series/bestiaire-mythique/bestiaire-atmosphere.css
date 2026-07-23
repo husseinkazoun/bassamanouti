@@ -1,0 +1,683 @@
+/* Bestiaire Mythique — a mineral, organic, uncanny world, distinct from Iconic.
+   Stone, oxidized teal, muted green and subdued gold; feathered specimen
+   fragments dissolving into an asymmetric, calmer, specimen-like rhythm. */
+
+.page-series--bestiaire-atmosphere {
+  --best-ground: #969c92;
+  --best-ground-rgb: 150, 156, 146;
+  --best-text: #1e2521;
+  --best-text-soft: #414a44;
+  --best-quiet: #5b645c;
+  --best-gold: #6c6135;
+  --best-teal: #38564d;
+  --gold: #3c574d;
+  background: var(--best-ground);
+  color: var(--best-text);
+}
+
+.page-series--bestiaire-atmosphere .site-nav.is-scrolled {
+  background: rgba(150, 156, 146, 0.88);
+}
+
+/* ---------- Hero ---------- */
+.bestiaire-hero {
+  --mx: 0px;
+  --my: 0px;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--best-ground);
+}
+
+.bestiaire-hero__field {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 72% 28%, rgba(52, 84, 74, 0.42), transparent 32rem),
+    radial-gradient(circle at 26% 74%, rgba(96, 92, 52, 0.2), transparent 34rem),
+    radial-gradient(circle at 58% 92%, rgba(58, 82, 70, 0.34), transparent 32rem),
+    linear-gradient(160deg, #939c8f 0%, #8d978d 58%, #889389 100%);
+}
+
+.bestiaire-hero__field::before {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  background: url('../../media/cropped/bestiaire-shahmaran.webp') 66% 20% / cover no-repeat;
+  opacity: 0.1;
+  filter: blur(3.6rem) saturate(0.3) contrast(0.92);
+  transform: scale(1.08) translate3d(calc(var(--mx) * -0.05), calc(var(--my) * -0.05), 0);
+  transition: transform 800ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.bestiaire-hero__field::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--best-ground) 0 34%, rgba(150, 156, 146, 0.28) 58%, rgba(150, 156, 146, 0) 88%),
+    linear-gradient(180deg, rgba(150, 156, 146, 0.42), transparent 18%, transparent 78%, rgba(150, 156, 146, 0.5));
+  pointer-events: none;
+}
+
+.bestiaire-hero__art {
+  position: absolute;
+  inset: 0 0 0 40%;
+  z-index: -1;
+  margin: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.28) 10%, #000 30%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.28) 10%, #000 30%, #000 100%);
+}
+
+.bestiaire-hero__art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(147, 156, 143, 0.2), transparent 16%, transparent 72%, rgba(147, 156, 143, 0.24)),
+    linear-gradient(90deg, rgba(147, 156, 143, 0.26), transparent 26%),
+    radial-gradient(circle at 60% 40%, rgba(52, 84, 72, 0.22), transparent 64%);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.bestiaire-hero__art img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 64% 14%;
+  filter: saturate(0.6) contrast(0.97) brightness(1);
+  transform: scale(1.02) translate3d(calc(var(--mx) * 0.06), calc(var(--my) * 0.06), 0);
+  transition: transform 900ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.bestiaire-hero__copy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: min(44rem, 48vw);
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(8.5rem, 16vh, 12rem) 0 clamp(3.2rem, 7vh, 5.5rem) var(--gutter);
+}
+
+.bestiaire-hero__index,
+.bestiaire-hero__groups,
+.bestiaire-hero__caption,
+.bestiaire-hero__scroll {
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 200;
+  letter-spacing: 0.24em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.bestiaire-hero__index {
+  margin: 0 0 1.35rem;
+  color: var(--best-gold);
+}
+
+.bestiaire-hero__copy h1 {
+  margin: 0;
+  color: var(--best-text);
+  font-family: var(--serif);
+  font-size: clamp(4.6rem, 9vw, 9.6rem);
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  line-height: 0.82;
+}
+
+.bestiaire-hero__lede {
+  max-width: 32rem;
+  margin: clamp(2.3rem, 5vh, 3.6rem) 0 0;
+  color: var(--best-text-soft);
+  font-family: var(--sans);
+  font-size: clamp(0.92rem, 1.15vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.bestiaire-hero__groups {
+  margin: 1.15rem 0 0;
+  color: var(--best-quiet);
+}
+
+.bestiaire-hero__scroll {
+  align-self: flex-start;
+  margin-top: clamp(2rem, 4vh, 3rem);
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(60, 87, 77, 0.7);
+  color: var(--best-text);
+  transition: border-color 250ms ease, color 250ms ease;
+}
+
+.bestiaire-hero__scroll span {
+  display: inline-block;
+  margin-left: 0.65rem;
+}
+
+.bestiaire-hero__scroll:hover {
+  border-color: var(--best-text);
+  color: var(--best-teal);
+}
+
+.bestiaire-hero__caption {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(2rem, 4vh, 3.25rem);
+  z-index: 3;
+  margin: 0;
+  color: rgba(30, 37, 33, 0.56);
+  writing-mode: vertical-rl;
+}
+
+/* ---------- Archive shell ---------- */
+#bestiaire-archive {
+  scroll-margin-top: 5rem;
+}
+
+.page-series--bestiaire-atmosphere .series-content {
+  width: 100%;
+  max-width: none;
+  background: var(--best-ground);
+}
+
+/* ---------- Statement ---------- */
+.bestiaire-statement {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(13rem, 0.34fr) minmax(0, 1fr);
+  gap: clamp(3rem, 10vw, 11rem);
+  align-items: start;
+  min-height: 66vh;
+  min-height: 66svh;
+  align-content: center;
+  padding: clamp(6rem, 12vw, 12rem) var(--gutter);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 24%, rgba(56, 86, 77, 0.16), transparent 28rem),
+    radial-gradient(circle at 18% 80%, rgba(108, 97, 53, 0.12), transparent 30rem),
+    linear-gradient(180deg, #979d93 0%, #939990 74%, #909790 100%);
+}
+
+.bestiaire-statement__aside {
+  position: sticky;
+  top: 7rem;
+  align-self: start;
+}
+
+.bestiaire-statement__aside .kicker {
+  color: var(--best-gold);
+}
+
+.page-series--bestiaire-atmosphere .chapter-nav {
+  border-color: rgba(30, 37, 33, 0.22);
+}
+
+.page-series--bestiaire-atmosphere .chapter-nav a {
+  border-color: rgba(30, 37, 33, 0.14);
+  color: var(--best-text-soft);
+}
+
+.page-series--bestiaire-atmosphere .chapter-nav a span {
+  color: var(--best-quiet);
+}
+
+.page-series--bestiaire-atmosphere .chapter-nav a:hover {
+  color: var(--best-teal);
+}
+
+.bestiaire-statement__copy p {
+  max-width: 52rem;
+  margin: 0;
+  color: rgba(30, 37, 33, 0.9);
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.4vw, 3.4rem);
+  font-weight: 300;
+  letter-spacing: -0.018em;
+  line-height: 1.18;
+}
+
+/* ---------- Chapters ---------- */
+.bestiaire-chapter--bestiaire {
+  --chapter-base: #969c92;
+  --chapter-base-rgb: 150, 156, 146;
+  --chapter-bloom: rgba(56, 86, 77, 0.26);
+  --chapter-warm: rgba(108, 97, 53, 0.18);
+}
+
+.bestiaire-chapter--hybrides {
+  --chapter-base: #949a93;
+  --chapter-base-rgb: 148, 154, 147;
+  --chapter-bloom: rgba(60, 90, 78, 0.24);
+  --chapter-warm: rgba(112, 99, 58, 0.2);
+}
+
+.bestiaire-chapter {
+  position: relative;
+  background: var(--chapter-base);
+}
+
+.bestiaire-chapter__header {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.28fr) minmax(0, 1fr) auto;
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: end;
+  align-content: end;
+  min-height: 48vh;
+  min-height: 48svh;
+  padding: clamp(6rem, 11vw, 11rem) var(--gutter) clamp(3.5rem, 7vw, 7rem);
+  overflow: hidden;
+  color: var(--best-text);
+  background:
+    radial-gradient(circle at 78% 32%, var(--chapter-bloom), transparent 28rem),
+    radial-gradient(circle at 20% 76%, var(--chapter-warm), transparent 30rem),
+    var(--chapter-base);
+}
+
+.bestiaire-chapter__header::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -1px;
+  z-index: -1;
+  height: 28%;
+  background: linear-gradient(180deg, transparent, var(--chapter-base));
+  pointer-events: none;
+}
+
+.bestiaire-chapter__header h2 {
+  margin: 0;
+  color: var(--best-text);
+  font-family: var(--serif);
+  font-size: clamp(4.4rem, 11vw, 11rem);
+  font-weight: 300;
+  letter-spacing: -0.058em;
+  line-height: 0.72;
+}
+
+.bestiaire-chapter__header .route-number {
+  color: var(--best-gold);
+}
+
+.bestiaire-chapter__header > span {
+  color: var(--best-quiet);
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 200;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ---------- Specimens ---------- */
+.bestiaire-field {
+  display: block;
+}
+
+.specimen {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  width: min(100%, var(--max));
+  min-height: 70vh;
+  min-height: 70svh;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 8vw, 8rem) var(--gutter);
+  overflow: hidden;
+}
+
+.specimen::before {
+  content: '';
+  position: absolute;
+  inset: 4% 0;
+  z-index: -1;
+  background-image: var(--art-source);
+  background-position: center;
+  background-size: cover;
+  opacity: 0.13;
+  filter: blur(clamp(2.6rem, 5vw, 5.4rem)) saturate(0.5) contrast(0.94);
+  transform: scale(1.1);
+  -webkit-mask-image: radial-gradient(ellipse 70% 76% at 50% 50%, #000 0 40%, transparent 82%);
+  mask-image: radial-gradient(ellipse 70% 76% at 50% 50%, #000 0 40%, transparent 82%);
+  pointer-events: none;
+}
+
+.specimen__media {
+  position: relative;
+  z-index: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.specimen--left .specimen__media {
+  grid-column: 1 / 9;
+}
+
+.specimen--right .specimen__media {
+  grid-column: 5 / 13;
+}
+
+.specimen__fragment {
+  margin: 0;
+  overflow: visible;
+  background: transparent;
+  /* Feather all edges so the specimen dissolves into the mineral field. */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0, #000 13%, #000 87%, transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0, #000 13%, #000 87%, transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.specimen__fragment::after {
+  display: none;
+}
+
+.specimen__fragment img {
+  width: 100%;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+  filter: saturate(0.74) contrast(0.98);
+  transform: none;
+}
+
+.specimen__copy {
+  position: relative;
+  z-index: 3;
+  grid-row: 1;
+  align-self: center;
+  max-width: 27rem;
+  padding: clamp(1rem, 3vw, 2.5rem) 0;
+}
+
+.specimen--left .specimen__copy {
+  grid-column: 8 / 13;
+  justify-self: end;
+}
+
+.specimen--right .specimen__copy {
+  grid-column: 1 / 6;
+}
+
+.specimen__copy::before {
+  content: '';
+  position: absolute;
+  inset: -14% -12% -14% -40%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    var(--chapter-base) 0,
+    rgba(var(--chapter-base-rgb), 0.96) 44%,
+    rgba(var(--chapter-base-rgb), 0.6) 72%,
+    rgba(var(--chapter-base-rgb), 0) 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 90%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 90%, transparent 100%);
+}
+
+.specimen--left .specimen__copy::before {
+  inset: -14% -40% -14% -12%;
+  background: linear-gradient(270deg,
+    var(--chapter-base) 0,
+    rgba(var(--chapter-base-rgb), 0.96) 44%,
+    rgba(var(--chapter-base-rgb), 0.6) 72%,
+    rgba(var(--chapter-base-rgb), 0) 100%);
+}
+
+.specimen__index {
+  margin: 0 0 1.25rem;
+  color: var(--best-quiet);
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  font-weight: 300;
+  letter-spacing: 0.19em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.specimen__copy h3 {
+  margin: 0;
+  color: var(--best-text);
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 5vw, 5.4rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.specimen__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.6rem;
+  margin: 1.4rem 0 0;
+  color: var(--best-gold);
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  font-weight: 300;
+  letter-spacing: 0.17em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.specimen__summary {
+  margin: 1.5rem 0 0;
+  color: var(--best-text-soft);
+  font-family: var(--sans);
+  font-size: clamp(0.95rem, 1.25vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* Organic asymmetry — vary size and vertical drift, quiet and specimen-like. */
+.specimen:nth-child(3n) .specimen__media {
+  transform: translateY(-5%);
+}
+
+.specimen:nth-child(3n + 2) .specimen__media {
+  transform: translateY(4%);
+}
+
+.specimen--left:nth-child(4n) .specimen__media {
+  grid-column: 1 / 8;
+}
+
+.specimen--right:nth-child(4n + 3) .specimen__media {
+  grid-column: 6 / 13;
+}
+
+/* ---------- End ---------- */
+.bestiaire-end {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: clamp(4rem, 8vw, 8rem) var(--gutter);
+  background: linear-gradient(180deg, #909790, #8c938c);
+}
+
+.bestiaire-end p {
+  margin: 0;
+  color: var(--best-quiet);
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 200;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bestiaire-end a {
+  display: inline-flex;
+  gap: 0.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--best-teal);
+  color: var(--best-text);
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 200;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 920px) {
+  .bestiaire-hero {
+    display: grid;
+    grid-template-rows: minmax(20rem, 48vh) auto;
+    grid-template-rows: minmax(20rem, 48svh) auto;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .bestiaire-hero__field {
+    bottom: auto;
+    height: 60vh;
+    height: 60svh;
+  }
+
+  .bestiaire-hero__field::after {
+    background:
+      linear-gradient(180deg, rgba(150, 156, 146, 0.26), transparent 14%, transparent 62%, var(--best-ground) 96%),
+      linear-gradient(90deg, rgba(150, 156, 146, 0.12), transparent 58%, rgba(150, 156, 146, 0.16));
+  }
+
+  .bestiaire-hero__art {
+    inset: 4rem 0 auto 14%;
+    height: 46vh;
+    height: 46svh;
+    -webkit-mask-image: linear-gradient(180deg, #000 0 70%, rgba(0, 0, 0, 0.7) 84%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0 70%, rgba(0, 0, 0, 0.7) 84%, transparent 100%);
+  }
+
+  .bestiaire-hero__copy {
+    grid-row: 2;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: auto;
+    padding: 0.5rem var(--gutter) 2.5rem;
+  }
+
+  .bestiaire-hero__copy h1 {
+    font-size: clamp(3.3rem, 12.5vw, 5.4rem);
+  }
+
+  .bestiaire-hero__lede {
+    margin-top: clamp(1.3rem, 3vh, 2rem);
+  }
+
+  .bestiaire-hero__scroll {
+    margin-top: clamp(1.2rem, 2.6vh, 1.9rem);
+  }
+
+  .bestiaire-hero__caption {
+    display: none;
+  }
+
+  .bestiaire-statement {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    min-height: auto;
+  }
+
+  .bestiaire-statement__aside {
+    position: static;
+  }
+
+  .bestiaire-chapter__header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 40vh;
+    min-height: 40svh;
+  }
+
+  .bestiaire-chapter__header .route-number {
+    grid-column: 1 / -1;
+  }
+
+  .specimen,
+  .specimen--left,
+  .specimen--right {
+    grid-template-columns: 1fr;
+    align-content: center;
+    min-height: auto;
+    gap: clamp(1.5rem, 5vw, 2.5rem);
+    padding-block: clamp(4.5rem, 10vw, 7rem);
+  }
+
+  .specimen--left .specimen__media,
+  .specimen--right .specimen__media,
+  .specimen--left:nth-child(4n) .specimen__media,
+  .specimen--right:nth-child(4n + 3) .specimen__media {
+    grid-column: 1;
+    grid-row: 1;
+    width: min(100%, 46rem);
+    justify-self: center;
+    transform: none;
+  }
+
+  .specimen--left .specimen__copy,
+  .specimen--right .specimen__copy {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+    max-width: 38rem;
+    padding: 0;
+  }
+
+  .specimen__copy::before,
+  .specimen--left .specimen__copy::before {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .bestiaire-hero__copy h1 {
+    font-size: clamp(3.6rem, 19vw, 6rem);
+    line-height: 0.78;
+  }
+
+  .bestiaire-statement__copy p {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+
+  .bestiaire-chapter__header {
+    grid-template-columns: 1fr;
+    min-height: 34vh;
+    min-height: 34svh;
+  }
+
+  .bestiaire-chapter__header h2 {
+    font-size: clamp(4rem, 20vw, 6.5rem);
+  }
+
+  .specimen__media {
+    width: calc(100% + (var(--gutter) * 1.1)) !important;
+    margin-inline: calc(var(--gutter) * -0.55);
+  }
+
+  .specimen__copy h3 {
+    font-size: clamp(2.6rem, 13vw, 4.4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bestiaire-hero__field::before,
+  .bestiaire-hero__art img {
+    transform: none;
+    transition: none;
+  }
+}

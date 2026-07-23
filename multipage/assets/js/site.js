@@ -24,6 +24,7 @@
     menuButton.setAttribute('aria-expanded', String(open));
     menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     body.style.overflow = open ? 'hidden' : '';
+    if (open) navLinks?.querySelector('a')?.focus();
   });
 
   navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
@@ -90,43 +91,24 @@
   const imageFigure = (image, className = '', loading = 'lazy') => {
     const asset = safeImage(image);
     if (!asset) return '';
-    return `<figure class="art-fragment ${className}">
-      <img src="${escapeHTML(contentRoot + asset.src)}" alt="${escapeHTML(asset.alt || 'Artwork detail by Bassam Anouti')}" loading="${loading === 'eager' ? 'eager' : 'lazy'}" decoding="async">
+    const assetPath = escapeHTML(contentRoot + asset.src);
+    return `<figure class="art-fragment ${className}" style="--art-source: url(${assetPath})">
+      <img src="${assetPath}" alt="${escapeHTML(asset.alt || 'Artwork detail by Bassam Anouti')}" loading="${loading === 'eager' ? 'eager' : 'lazy'}" decoding="async">
     </figure>`;
   };
 
   const workMedia = work => {
     const images = (work.images || []).map(safeImage).filter(Boolean).slice(0, 2);
-    if (!images.length) {
-      return `<div class="work-media work-media--empty" aria-label="Artwork detail not currently available">
-        <span>Visual detail<br>in preparation</span>
-      </div>`;
-    }
+    if (!images.length) return '';
     return `<div class="work-media work-media--${images.length}">
       ${images.map((image, index) => imageFigure(image, `art-fragment--${index + 1}`)).join('')}
     </div>`;
   };
 
-  const workMeta = work => [work.date, work.origin, work.dimensions, work.medium]
+  const workMeta = work => [work.date, work.origin, work.dimensions]
     .filter(Boolean)
     .map(escapeHTML)
     .join('<span aria-hidden="true">·</span>');
-
-  const renderHome = content => {
-    const stage = document.querySelector('[data-home-art]');
-    const facts = document.querySelector('[data-home-facts]');
-    if (!stage) return;
-    const iconic = content.series.find(series => series.slug === 'iconic');
-    const bestiaire = content.series.find(series => series.slug === 'bestiaire-mythique');
-    const iconicImage = iconic?.groups?.[0]?.works?.[0]?.images?.[1] || iconic?.groups?.[0]?.works?.[0]?.images?.[0];
-    const bestiaireImage = bestiaire?.groups?.[0]?.works?.[0]?.images?.[0];
-    stage.innerHTML = `${imageFigure(iconicImage, 'home-fragment home-fragment--iconic', 'eager')}${imageFigure(bestiaireImage, 'home-fragment home-fragment--bestiaire', 'eager')}`;
-    if (facts) {
-      const workCount = content.series.flatMap(series => series.groups || []).flatMap(group => group.works || []).length;
-      const places = (content.artist?.places || []).join(' · ');
-      facts.innerHTML = `<span>${content.series.length} series</span><span>${workCount} works indexed</span><span>${escapeHTML(places)}</span>`;
-    }
-  };
 
   const renderSeriesIndex = content => {
     const container = document.querySelector('[data-series-worlds]');
@@ -151,12 +133,281 @@
     }).join('');
   };
 
+  const renderIconicPlateLayout = (series, container, studyOnly = false) => {
+    const imageOrders = {
+      // The atmospheric layout uses one composed fragment per work. Several
+      // source entries contain alternate crops of the same artwork; layering
+      // those crops made the figure appear duplicated rather than integrated.
+      // Semiramis archive uses crop C so the later appearance differs from the hero (crop B).
+      'semiramis-and-ninyas': [1],
+      'agrippina-and-nero': [0],
+      'sitt-al-mulk-and-al-hakim': [0],
+      'shajara-al-durr-and-izz-ad-din-aybak': [1],
+      'seth-and-horus': [0]
+    };
+
+    // Deliberate left/right/center rhythm — avoid consecutive same-side History beats.
+    const sceneLayouts = {
+      'semiramis-and-ninyas': 'right',
+      'agrippina-and-nero': 'left',
+      'messalina-and-britannicus': 'right',
+      'rodrigo-and-lucrezia-borgia': 'center',
+      'al-khayzuran': 'left',
+      'sitt-al-mulk-and-al-hakim': 'right',
+      'shajara-al-durr-and-izz-ad-din-aybak': 'left',
+      'seth-and-horus': 'left',
+      'tantalus-and-pelops': 'right',
+      'phaedra-and-hippolytus': 'center',
+      'jocasta-and-oedipus': 'right',
+      'baba-yaga': 'left',
+      'kuchisake-onna': 'right'
+    };
+
+    const renderPlateWork = (work, index, groupTitle) => {
+      const safeImages = (work.images || []).map(safeImage).filter(Boolean);
+      const order = imageOrders[work.slug] || safeImages.map((_, imageIndex) => imageIndex);
+      const images = order.map(imageIndex => safeImages[imageIndex]).filter(Boolean);
+      const countName = images.length === 1 ? 'single' : images.length === 2 ? 'double' : 'triple';
+      const figures = images.map((image, imageIndex) =>
+        imageFigure(image, `plate-figure plate-figure--${imageIndex + 1}`, index === 0 && imageIndex === 0 ? 'eager' : 'lazy')
+      ).join('');
+
+      return `<article class="plate-work plate-work--${countName}" id="${escapeHTML(work.slug)}">
+        <header class="plate-work__header">
+          <p class="plate-work__index">${String(index + 1).padStart(2, '0')} / ${escapeHTML(groupTitle)}</p>
+          <h2>${escapeHTML(work.title)}</h2>
+          <p class="plate-work__meta">${workMeta(work)}</p>
+        </header>
+        <div class="plate-media plate-media--${countName}">${figures}</div>
+        <div class="plate-work__caption">
+          <p>${escapeHTML(work.summary)}</p>
+          <span>Selected details · approved crops</span>
+        </div>
+      </article>`;
+    };
+
+    const renderAtmosphericWork = (work, index, group) => {
+      const safeImages = (work.images || []).map(safeImage).filter(Boolean);
+      const order = imageOrders[work.slug] || safeImages.map((_, imageIndex) => imageIndex);
+      const images = order.map(imageIndex => safeImages[imageIndex]).filter(Boolean).slice(0, 2);
+      const layout = sceneLayouts[work.slug] || (index % 2 ? 'right' : 'left');
+      const countName = images.length > 1 ? 'double' : 'single';
+      const figures = images.map((image, imageIndex) => imageFigure(
+        image,
+        `iconic-scene__figure iconic-scene__figure--${imageIndex + 1}`,
+        index === 0 && imageIndex === 0 ? 'eager' : 'lazy'
+      )).join('');
+
+      return `<article class="iconic-scene iconic-scene--${layout} iconic-scene--${countName}" id="${escapeHTML(work.slug)}">
+        <div class="iconic-scene__inner">
+          <div class="iconic-scene__media" aria-label="Selected details from ${escapeHTML(work.title)}">${figures}</div>
+          <header class="iconic-scene__copy">
+            <p class="iconic-scene__index">${String(index + 1).padStart(2, '0')} / ${escapeHTML(group.title)}</p>
+            <h3>${escapeHTML(work.title)}</h3>
+            <p class="iconic-scene__meta">${workMeta(work)}</p>
+            <p class="iconic-scene__summary">${escapeHTML(work.summary)}</p>
+            ${work.medium ? `<span class="iconic-scene__note">${escapeHTML(work.medium)}</span>` : ''}
+          </header>
+        </div>
+      </article>`;
+    };
+
+    const renderAtmosphericPending = (work, index, group) => `<article class="iconic-scene iconic-scene--pending" id="${escapeHTML(work.slug)}">
+      <div class="iconic-scene__inner">
+        <header class="iconic-scene__copy">
+          <p class="iconic-scene__index">${String(index + 1).padStart(2, '0')} / ${escapeHTML(group.title)}</p>
+          <h3>${escapeHTML(work.title)}</h3>
+          <p class="iconic-scene__meta">${workMeta(work)}</p>
+          <p class="iconic-scene__summary">${escapeHTML(work.summary)}</p>
+          ${work.medium ? `<span class="iconic-scene__note">${escapeHTML(work.medium)}</span>` : ''}
+        </header>
+      </div>
+    </article>`;
+
+    if (studyOnly) {
+      const history = (series.groups || []).find(group => group.slug === 'history');
+      if (!history) return;
+      const selectedSlugs = [
+        'semiramis-and-ninyas',
+        'agrippina-and-nero',
+        'sitt-al-mulk-and-al-hakim'
+      ];
+      const selectedWorks = selectedSlugs
+        .map(slug => (history.works || []).find(work => work.slug === slug))
+        .filter(Boolean);
+      const works = selectedWorks.map((work, index) => renderPlateWork(work, index, 'History')).join('');
+
+      container.innerHTML = `<section class="plate-study-intro" aria-label="Presentation principle">
+        <p class="kicker">History · Three-work study</p>
+        <p>The crop is treated as a finished composition, not raw material. Scale creates drama; clear edges, natural proportions and measured space preserve the image.</p>
+      </section>
+      <section class="plate-study" aria-label="Selected Iconic works">${works}</section>
+      <div class="plate-study-end">
+        <p>End of presentation study</p>
+        <a href="../iconic/" data-transition>Return to the complete Iconic series <span aria-hidden="true">→</span></a>
+      </div>`;
+      return;
+    }
+
+    const chapterNav = (series.groups || []).map((group, index) =>
+      `<a href="#${escapeHTML(group.slug)}"><span>0${index + 1}</span>${escapeHTML(group.title)}</a>`
+    ).join('');
+
+    const chapters = (series.groups || []).map((group, groupIndex) => {
+      const works = (group.works || []).map((work, workIndex) => {
+        const hasImage = (work.images || []).map(safeImage).some(Boolean);
+        return hasImage
+          ? renderAtmosphericWork(work, workIndex, group)
+          : renderAtmosphericPending(work, workIndex, group);
+      }).join('');
+
+      return `<section class="plate-chapter plate-chapter--${escapeHTML(group.slug)}" id="${escapeHTML(group.slug)}" aria-labelledby="${escapeHTML(group.slug)}-title">
+        <header class="plate-chapter__header">
+          <p class="route-number">0${groupIndex + 1} / Iconic</p>
+          <h2 id="${escapeHTML(group.slug)}-title">${escapeHTML(group.title)}</h2>
+          <span>${group.works.length} works</span>
+        </header>
+        <div class="plate-chapter__works">${works}</div>
+      </section>`;
+    }).join('');
+
+    container.innerHTML = `<section class="plate-series-intro">
+      <div class="plate-series-intro__aside">
+        <p class="kicker">${escapeHTML(series.date)}</p>
+        <nav class="chapter-nav" aria-label="Iconic chapters">${chapterNav}</nav>
+      </div>
+      <div class="plate-series-intro__copy"><p>${escapeHTML(series.statement)}</p></div>
+    </section>
+    ${chapters}
+    <div class="plate-study-end">
+      <p>End of Iconic</p>
+      <a href="../" data-transition>Return to all work <span aria-hidden="true">→</span></a>
+    </div>`;
+
+    setupChapterRail(series.groups || []);
+  };
+
+  const setupChapterRail = groups => {
+    if (!groups.length) return;
+    document.querySelector('.chapter-rail')?.remove();
+    const rail = document.createElement('nav');
+    rail.className = 'chapter-rail';
+    rail.setAttribute('aria-label', 'Chapter progress');
+    rail.innerHTML = `<ol>${groups.map((group, index) => `<li>
+      <a href="#${escapeHTML(group.slug)}" data-rail="${escapeHTML(group.slug)}">
+        <span class="chapter-rail__num" aria-hidden="true">0${index + 1}</span>
+        <span class="chapter-rail__tick" aria-hidden="true"></span>
+        <span class="chapter-rail__label">${escapeHTML(group.title)}</span>
+      </a></li>`).join('')}</ol>`;
+    document.body.appendChild(rail);
+
+    const links = {};
+    rail.querySelectorAll('[data-rail]').forEach(link => { links[link.dataset.rail] = link; });
+    const sections = groups.map(group => document.getElementById(group.slug)).filter(Boolean);
+    let current = null;
+
+    const setActive = slug => {
+      if (slug === current) return;
+      current = slug;
+      for (const key in links) {
+        const on = key === slug;
+        links[key].classList.toggle('is-active', on);
+        if (on) links[key].setAttribute('aria-current', 'true');
+        else links[key].removeAttribute('aria-current');
+      }
+    };
+
+    let ticking = false;
+    const recompute = () => {
+      ticking = false;
+      const vh = window.innerHeight;
+      const line = vh * 0.4;
+      let anyVisible = false;
+      let active = null;
+      for (const el of sections) {
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < vh) anyVisible = true;
+        if (rect.top <= line && rect.bottom >= line) active = el.id;
+      }
+      if (!active && anyVisible) {
+        // between focus lines: keep nearest section above the line
+        let best = null, bestTop = -Infinity;
+        for (const el of sections) {
+          const top = el.getBoundingClientRect().top;
+          if (top <= line && top > bestTop) { bestTop = top; active = el.id; best = el; }
+        }
+      }
+      rail.classList.toggle('is-visible', anyVisible);
+      if (active) setActive(active);
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(recompute); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    recompute();
+  };
+
+  const renderBestiaireLayout = (series, container) => {
+    const chapterNav = (series.groups || []).map((group, index) =>
+      `<a href="#${escapeHTML(group.slug)}"><span>0${index + 1}</span>${escapeHTML(group.title)}</a>`
+    ).join('');
+
+    const chapters = (series.groups || []).map((group, groupIndex) => {
+      const specimens = (group.works || []).map((work, workIndex) => {
+        const image = (work.images || []).map(safeImage).find(Boolean);
+        const side = workIndex % 2 === 0 ? 'left' : 'right';
+        const source = image ? escapeHTML(contentRoot + image.src) : '';
+        const figure = image
+          ? imageFigure(image, 'specimen__fragment', groupIndex === 0 && workIndex === 0 ? 'eager' : 'lazy')
+          : '';
+        return `<article class="specimen specimen--${side}" id="${escapeHTML(work.slug)}" style="--art-source: url(${source})">
+          <div class="specimen__media">${figure}</div>
+          <div class="specimen__copy">
+            <p class="specimen__index">${String(workIndex + 1).padStart(2, '0')} / ${escapeHTML(group.title)}</p>
+            <h3>${escapeHTML(work.title)}</h3>
+            <p class="specimen__meta">${workMeta(work)}</p>
+            <p class="specimen__summary">${escapeHTML(work.summary)}</p>
+          </div>
+        </article>`;
+      }).join('');
+
+      return `<section class="bestiaire-chapter bestiaire-chapter--${escapeHTML(group.slug)}" id="${escapeHTML(group.slug)}" aria-labelledby="${escapeHTML(group.slug)}-title">
+        <header class="bestiaire-chapter__header">
+          <p class="route-number">0${groupIndex + 1} / Bestiaire Mythique</p>
+          <h2 id="${escapeHTML(group.slug)}-title">${escapeHTML(group.title)}</h2>
+          <span>${group.works.length} works</span>
+        </header>
+        <div class="bestiaire-field">${specimens}</div>
+      </section>`;
+    }).join('');
+
+    container.innerHTML = `<section class="bestiaire-statement">
+      <div class="bestiaire-statement__aside">
+        <p class="kicker">${escapeHTML(series.date)}</p>
+        <nav class="chapter-nav" aria-label="Bestiaire Mythique chapters">${chapterNav}</nav>
+      </div>
+      <div class="bestiaire-statement__copy"><p>${escapeHTML(series.statement)}</p></div>
+    </section>
+    ${chapters}
+    <div class="bestiaire-end">
+      <p>End of Bestiaire Mythique</p>
+      <a href="../" data-transition>Return to all work <span aria-hidden="true">→</span></a>
+    </div>`;
+  };
+
   const renderSeriesPage = content => {
     const container = document.querySelector('[data-series-page]');
     const slug = body.dataset.series;
     if (!container || !slug) return;
     const series = content.series.find(item => item.slug === slug);
     if (!series) return;
+    if (slug === 'iconic' && (body.dataset.seriesStudy === 'plate' || body.dataset.seriesLayout === 'plate')) {
+      renderIconicPlateLayout(series, container, body.dataset.seriesStudy === 'plate');
+      return;
+    }
+    if (slug === 'bestiaire-mythique' && body.dataset.seriesLayout === 'atmosphere') {
+      renderBestiaireLayout(series, container);
+      return;
+    }
     const heroStage = document.querySelector('[data-series-hero]');
     const allWorks = (series.groups || []).flatMap(group => group.works || []);
     const heroImages = allWorks.flatMap(work => work.images || []).map(safeImage).filter(Boolean).slice(0, 2);
@@ -169,7 +420,9 @@
       `<a href="#${escapeHTML(group.slug)}"><span>0${index + 1}</span>${escapeHTML(group.title)}</a>`
     ).join('');
     const chapters = (series.groups || []).map((group, groupIndex) => {
-      const works = (group.works || []).map((work, workIndex) => {
+      const visualWorks = (group.works || []).filter(work => (work.images || []).map(safeImage).some(Boolean));
+      const furtherWorks = (group.works || []).filter(work => !(work.images || []).map(safeImage).some(Boolean));
+      const works = visualWorks.map((work, workIndex) => {
         const number = String(workIndex + 1).padStart(2, '0');
         return `<article class="work-sequence__item" id="${escapeHTML(work.slug)}">
           <div class="work-sequence__index" aria-hidden="true">${number}</div>
@@ -181,13 +434,17 @@
           </div>
         </article>`;
       }).join('');
+      const further = furtherWorks.length ? `<aside class="further-works" aria-label="Further works in ${escapeHTML(group.title)}">
+        <p class="kicker">Further works</p>
+        <ol>${furtherWorks.map(work => `<li><span>${escapeHTML(work.title)}</span><small>${workMeta(work)}</small></li>`).join('')}</ol>
+      </aside>` : '';
       return `<section class="series-chapter-block" id="${escapeHTML(group.slug)}" aria-labelledby="${escapeHTML(group.slug)}-title">
         <header class="chapter-heading reveal is-visible">
           <p class="route-number">0${groupIndex + 1} / ${escapeHTML(series.title)}</p>
           <h2 id="${escapeHTML(group.slug)}-title">${escapeHTML(group.title)}</h2>
           <span>${group.works.length} works</span>
         </header>
-        <div class="work-sequence">${works}</div>
+        <div class="work-sequence">${works}</div>${further}
       </section>`;
     }).join('');
     container.innerHTML = `<section class="series-statement">
@@ -205,9 +462,9 @@
     const verified = (content.exhibitions || []).filter(exhibition => exhibition.verified === true);
     if (!verified.length) {
       container.innerHTML = `<div class="archive-state reveal is-visible">
-        <p class="kicker">Archive in review</p>
-        <p>The exhibition chronology is being source-checked with the artist. Only confirmed public presentations will appear here.</p>
-        <span>No unverified event has been published.</span>
+        <p class="kicker">Exhibitions</p>
+        <p>No public exhibition record is listed at this time. Enquiries are welcome by email.</p>
+        <span>Only confirmed public presentations are published.</span>
       </div>`;
       return;
     }
@@ -218,36 +475,15 @@
     </li>`).join('')}</ol>`;
   };
 
-  const renderContact = content => {
-    const facts = document.querySelector('[data-contact-facts]');
-    const action = document.querySelector('[data-contact-action]');
-    if (!facts) return;
-    const contact = content.contact || {};
-    const emailConfirmed = contact.email && !/not independently confirmed/i.test(contact.email_note || '') &&
-      !(contact.needs_confirmation || []).some(item => item.includes(contact.email));
-    const rows = [];
-    if (contact.location) rows.push(`<div><dt>Based in</dt><dd>${escapeHTML(contact.location)}</dd></div>`);
-    if (contact.instagram) rows.push(`<div><dt>Instagram</dt><dd><a href="${escapeHTML(contact.instagram)}" target="_blank" rel="noreferrer">View profile ↗</a></dd></div>`);
-    if (contact.artsy) rows.push(`<div><dt>Artsy</dt><dd><a href="${escapeHTML(contact.artsy)}" target="_blank" rel="noreferrer">View profile ↗</a></dd></div>`);
-    facts.innerHTML = rows.join('');
-    if (emailConfirmed && action) {
-      action.innerHTML = `<a class="contact-mail" href="mailto:${escapeHTML(contact.email)}">${escapeHTML(contact.email)}</a>`;
-    } else if (action) {
-      action.innerHTML = `<p class="contact-pending">Direct contact details are being verified.</p>`;
-    }
-  };
-
   const loadContent = async () => {
     if (!document.querySelector('[data-content]')) return;
     try {
       const response = await fetch(new URL(`${contentRoot}data/site-content.json`, document.baseURI));
       if (!response.ok) throw new Error(`Content request failed: ${response.status}`);
       const content = await response.json();
-      renderHome(content);
       renderSeriesIndex(content);
       renderSeriesPage(content);
       renderExhibitions(content);
-      renderContact(content);
     } catch (error) {
       console.error(error);
       document.querySelectorAll('[data-content]').forEach(region => {

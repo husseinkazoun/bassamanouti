@@ -4,42 +4,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Bassam Anouti — multidisciplinary artist, art historian, educator and digital image-maker.">
-  <meta name="theme-color" content="#0d0c0a">
+  <meta name="theme-color" content="#b8b1a7">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bassam Anouti">
+  <meta property="og:title" content="Bassam Anouti — Artist &amp; Digital Image-Maker">
+  <meta property="og:description" content="Art, research and visual storytelling across Iconic and Bestiaire Mythique.">
+  <meta property="og:image" content="https://bassamanouti.pages.dev/multipage/assets/media/bassam-anouti-share.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bassam Anouti — Artist &amp; Digital Image-Maker">
+  <meta name="twitter:description" content="Art, research and visual storytelling across Iconic and Bestiaire Mythique.">
+  <meta name="twitter:image" content="https://bassamanouti.pages.dev/multipage/assets/media/bassam-anouti-share.png">
   <title>Bassam Anouti — Artist &amp; Digital Image-Maker</title>
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="assets/css/site.css?v=4">
-  <script src="assets/js/site.js?v=4" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&amp;family=Inter:wght@200;300;400&amp;display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/media/ba-favicon.png">
+  <link rel="stylesheet" href="assets/css/site.css?v=15">
+  <script src="assets/js/site.js?v=10" defer></script>
 </head>
 <body class="page-home" data-site-root="">
   <a class="skip-link" href="#main">Skip to content</a>
   <nav class="site-nav" aria-label="Primary navigation">
     <a class="brand" href="./" aria-current="page" data-transition>Bassam Anouti</a>
     <ul class="nav-links" id="site-menu">
+      <li><a href="series/" data-transition>Work</a></li>
       <li><a href="about/" data-transition>About</a></li>
-      <li><a href="series/" data-transition>Series</a></li>
-      <li><a href="exhibitions/" data-transition>Exhibitions</a></li>
       <li><a href="contact/" data-transition>Contact</a></li>
     </ul>
-    <a class="compare-link" href="../" aria-label="View comparison version one">Version one ↗</a>
+    <span class="language-slot" aria-label="Current language">EN</span>
     <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-menu">
       <span aria-hidden="true"></span><span aria-hidden="true"></span>
     </button>
   </nav>
 
   <main id="main" class="page-shell">
-    <section class="hero hero--home" data-pointer-stage>
-      <div class="orbit" aria-hidden="true"></div>
+    <section class="hero hero--home">
+      <figure class="home-hero-media reveal">
+        <img src="../images/history/semiramis-and-ninyas.jpg" alt="Semiramis and Ninyas — from the Iconic series by Bassam Anouti" width="1936" height="2024" decoding="async" fetchpriority="high">
+      </figure>
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow reveal" data-i18n="home.eyebrow">Artist · Art historian · Digital image-maker</p>
+          <p class="eyebrow reveal">Iconic — a fresco of transgression</p>
           <h1 class="hero-title reveal" data-i18n="artist.name">Bassam<br>Anouti</h1>
+          <p class="hero-roleline reveal" data-i18n="home.eyebrow">Artist · Art historian · Digital image-maker</p>
+          <p class="hero-places reveal">Beirut · Paris · Rome</p>
+          <a class="hero-entry reveal" href="series/iconic/" data-transition>
+            <span>Enter the series</span><span aria-hidden="true">→</span>
+          </a>
         </div>
-        <div class="hero-side">
-          <div class="home-art reveal" data-home-art data-content aria-label="Selected artwork details"></div>
-          <p class="hero-note reveal" data-i18n="home.intro">Research, image-making and visual storytelling converge in constructed images that invite interpretation rather than prescribe it.</p>
-        </div>
-        <div class="hero-meta reveal" data-home-facts>
-          <span>2 series</span><span>28 works indexed</span><span>Beirut · Paris · Rome</span>
+        <div class="hero-spacer" aria-hidden="true"></div>
+        <div class="hero-scroll reveal" aria-hidden="true">
+          <span>Scroll</span><span class="hero-scroll__line"></span>
         </div>
       </div>
     </section>
@@ -50,27 +65,38 @@
 
     <section class="section" aria-labelledby="series-heading">
       <div class="section-head reveal">
-        <p class="route-number">01 / Series</p>
-        <h2 id="series-heading" class="section-title">Two bodies.<br>Two visual systems.</h2>
+        <p class="route-number">01 / Work</p>
+        <h2 id="series-heading" class="section-title">Art, across two<br>visual worlds.</h2>
       </div>
       <div class="gateways">
-        <a class="gateway reveal" href="series/iconic/" data-transition>
+        <a class="gateway gateway--iconic reveal" href="series/iconic/" data-transition>
+          <figure class="gateway-media" style="--gateway-art: url('media/cropped/iconic-history-agrippina-and-nero.webp')" aria-hidden="true">
+            <img src="media/cropped/iconic-history-agrippina-and-nero.webp" alt="" width="2420" height="1483" loading="lazy" decoding="async">
+          </figure>
           <span class="gateway-index">01</span>
-          <h3 class="gateway-name">Iconic</h3>
-          <span class="gateway-action">History · Mythology · Folklore</span>
+          <span class="gateway-copy"><strong class="gateway-name">Iconic</strong><small>History · Mythology · Folklore</small></span>
+          <span class="gateway-action">Enter work <span aria-hidden="true">↗</span></span>
         </a>
-        <a class="gateway reveal" href="series/bestiaire-mythique/" data-transition>
+        <a class="gateway gateway--bestiaire reveal" href="series/bestiaire-mythique/" data-transition>
+          <figure class="gateway-media" style="--gateway-art: url('media/cropped/bestiaire-alconost.webp')" aria-hidden="true">
+            <img src="media/cropped/bestiaire-alconost.webp" alt="" width="2420" height="1368" loading="lazy" decoding="async">
+          </figure>
           <span class="gateway-index">02</span>
-          <h3 class="gateway-name">Bestiaire Mythique</h3>
-          <span class="gateway-action">Bestiaire · Hybrides</span>
+          <span class="gateway-copy"><strong class="gateway-name">Bestiaire Mythique</strong><small>Bestiaire · Hybrides</small></span>
+          <span class="gateway-action">Enter work <span aria-hidden="true">↗</span></span>
         </a>
       </div>
+      <a class="section-link reveal" href="series/" data-transition>View all work <span aria-hidden="true">→</span></a>
     </section>
   </main>
 
   <footer class="site-footer">
-    <span>© 2026 Bassam Anouti</span>
-    <span>Selected works · English</span>
+    <div class="footer-identity"><span>© 2026 Bassam Anouti</span><span class="language-slot" aria-label="Current language">EN</span></div>
+    <nav class="footer-links" aria-label="Secondary navigation">
+      <a href="mailto:Anoutibassam@gmail.com">Email</a>
+      <a href="https://www.instagram.com/bassamanouti/" target="_blank" rel="noreferrer">Instagram ↗</a>
+      <a href="../">Previous version ↗</a>
+    </nav>
   </footer>
 </body>
 </html>

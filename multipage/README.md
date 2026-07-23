@@ -1,75 +1,92 @@
-# Bassam Anouti — multi-page comparison
+# Bassam Anouti — comparison version two
 
-This directory is comparison version two. The existing website at the repository root remains unchanged as comparison version one.
+`multipage/` is the web-native comparison concept. The existing website at the repository root remains comparison version one.
 
 ## Local comparison
 
-From the repository root, start a local static server:
+From the repository root, start a static server:
 
 ```sh
 python3 -m http.server 4173 --bind 127.0.0.1
 ```
 
-Then compare:
+Open:
 
 - Version one: `http://127.0.0.1:4173/`
 - Version two: `http://127.0.0.1:4173/multipage/`
+- Iconic image-presentation study: `http://127.0.0.1:4173/multipage/series/iconic-study/`
 
-Version two is a complete multi-page concept with Home, About, Series, Iconic, Bestiaire Mythique, Exhibitions, and Contact routes. It consumes `data/site-content.json` in the browser and uses only artwork fragments from `media/cropped/`.
+The Iconic study is a local comparison surface for three representative works. It preserves the supplied crops at their natural aspect ratios and tests single-, double- and triple-image presentations without masks or overlapping imagery. It is marked `noindex` and is not linked from the public navigation.
 
-## Parallel ownership
+## Current public structure
 
-Codex owns the HTML, CSS, JavaScript, and this README inside `multipage/`.
+The primary navigation is deliberately concise:
 
-Claude owns:
+- Work
+- About
+- Contact
 
-- `multipage/data/**`
-- `multipage/media/cropped/**`
+Work currently contains one practice area, **Art**, with two series:
 
-Those folders must remain read-only to the site implementation agent.
+- **Iconic** — History, Mythology and Folklore
+- **Bestiaire Mythique** — Bestiaire and Hybrides
 
-## Content integration
+Iconic now uses an image-first **art plate** system: every crop keeps its natural aspect ratio, single images remain uninterrupted, and multiple details are arranged as non-overlapping sequences. The separate Iconic study route remains available temporarily for comparison while this direction is reviewed.
 
-Claude's content handoff is marked by:
+The Work layout can receive a second practice later without changing the page hierarchy. **Jewelry Design is a future, pending practice and is not a published route, placeholder or navigation item in this round.**
 
-`multipage/data/READY`
+The existing `exhibitions/` route is retained only as an unlinked, `noindex` archive-review page. It does not appear in public navigation, and no unverified exhibition is published.
 
-`multipage/data/site-content.json` is the source of truth for:
+## Public and internal data
 
-- series hierarchy and work metadata;
-- approved cropped-image mapping;
-- exhibition verification state;
-- contact verification state.
+The browser fetches only:
 
-The public pages deliberately filter unverified exhibition and contact claims. When no verified entry exists, they show a restrained archive/status message instead of publishing an unsupported claim.
+- `data/site-content.json` — public artist, series, work and confirmed contact content
 
-## Final media handoff
+It never fetches:
 
-The chrome-free artwork-fragment handoff is complete and marked by:
+- `data/internal-research.json`
+- research notes or handoff markers
+- jewelry audit material
 
-`multipage/data/CROPS_READY`
+Internal research files are local production references and must remain outside any public deployment payload. The public manifest contains the approved five-paragraph English biography and no internal research records.
 
-All 31 approved WebP assets keep stable `media/cropped/` paths. The cleaned Baba Yaga fragment is published in the Folklore chapter; three works without an approved crop retain a restrained typographic placeholder.
+## Artwork policy
 
-## Content decisions
+- Semiramis and Ninyas is the single approved complete-image exception on the homepage hero.
+- Every other displayed artwork image is an approved fragment under `media/cropped/`.
+- No complete-artwork lightbox is provided.
+- The three Iconic works without approved imagery are named in restrained text-only **Further Works** lists; no large placeholder panels appear.
+- Ancien Testament, Religion, Education and Process sections are not published.
 
-- Iconic contains History, Mythology, and Folklore only.
-- Bestiaire Mythique contains Bestiaire and Hybrides.
-- Iconic and Bestiaire Mythique appear only under Series.
-- No standalone Process, Education, Religion, or Ancien Testament content is published.
-- The approved English biography is preserved.
-- Unavailable images are represented typographically and never substituted with full artworks.
-- Unverified exhibitions and contact methods remain hidden.
+## Review-phase details
+
+- The footer carries confirmed email and Instagram links.
+- A discreet **Previous version** link remains in the footer while the two concepts are being compared.
+- An `EN` position is reserved for a future complete EN/FR language switch; no partial toggle is implemented.
+- Social metadata uses `assets/media/bassam-anouti-share.png`, a typography-led card with no artwork.
 
 ## Validation completed
 
-- All seven routes load successfully through HTTP with working local links and assets.
-- Desktop was reviewed at 1440 × 900; mobile was reviewed at 390 × 844, including dense artwork sequences.
-- No route has horizontal overflow at the tested sizes.
-- Responsive navigation opens and closes accessibly, restores focus on Escape, and exposes a visible focus treatment.
-- Iconic chapter links scroll to History, Mythology, and Folklore; the cleaned Baba Yaga crop loads successfully.
-- Reduced-motion CSS and JavaScript paths disable non-essential animation and transitions.
-- All 31 manifest image references exist, and every public artwork image resolves under `multipage/media/cropped/`.
-- No root artwork, full-artwork lightbox, placeholder `#` link, or unverified exhibition/contact claim is published.
-- Iconic and Bestiaire Mythique appear only under Series; prohibited standalone sections are absent publicly.
-- No production domain, deployment configuration, package file, or root-site file was changed.
+- Home, About, Work, Iconic, Bestiaire Mythique, Contact and the unlinked Exhibitions route return HTTP 200.
+- Primary navigation is consistently Work · About · Contact.
+- Desktop (1440 × 1000) and mobile (390 × 844) layouts have no horizontal document overflow.
+- The mobile menu opens, moves focus to its first link, closes on Escape and restores focus to the menu button.
+- Focus indicators are visible; reduced-motion mode suppresses non-essential motion.
+- No console or page errors were detected in local browser checks.
+- Iconic renders History, Mythology and Folklore only; the missing-image works are text-only.
+- Every rendered artwork image except the approved hero resolves under `multipage/media/cropped/`.
+- Email, Instagram, favicon and social-card assets resolve locally.
+- No root-site, package, workflow or deployment file was changed for this production pass.
+
+## Parallel ownership
+
+Codex owns the HTML, CSS, JavaScript and this README inside `multipage/`.
+
+Claude owns and prepares:
+
+- `multipage/data/**`
+- `multipage/media/cropped/**`
+- `multipage/media/jewelry-review/**`
+
+Those content and media paths remain read-only to the site implementation work.

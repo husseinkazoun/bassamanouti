@@ -3,43 +3,64 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Iconic, a series by Bassam Anouti.">
-  <meta name="theme-color" content="#0d0c0a">
+  <meta name="description" content="Iconic by Bassam Anouti — history, mythology and folklore staged through beauty, power and transgression.">
+  <meta name="theme-color" content="#b8b1a7">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bassam Anouti">
+  <meta property="og:title" content="Iconic — Bassam Anouti">
+  <meta property="og:description" content="History, mythology and folklore staged through beauty, power and transgression.">
+  <meta property="og:image" content="https://bassamanouti.pages.dev/multipage/assets/media/bassam-anouti-share.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Iconic — Bassam Anouti">
+  <meta name="twitter:description" content="History, mythology and folklore staged through beauty, power and transgression.">
+  <meta name="twitter:image" content="https://bassamanouti.pages.dev/multipage/assets/media/bassam-anouti-share.png">
   <title>Iconic — Bassam Anouti</title>
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../../assets/css/site.css?v=4">
-  <script src="../../assets/js/site.js?v=4" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&amp;family=Inter:wght@200;300;400&amp;display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../../assets/media/ba-favicon.png">
+  <link rel="stylesheet" href="../../assets/css/site.css?v=12">
+  <link rel="stylesheet" href="iconic-atmosphere.css?v=13">
+  <script src="../../assets/js/site.js?v=12" defer></script>
 </head>
-<body class="page-series page-series--iconic" data-site-root="../../" data-series="iconic">
+<body class="page-series page-series--iconic page-series--plate page-series--atmosphere" data-site-root="../../" data-series="iconic" data-series-layout="plate">
   <a class="skip-link" href="#main">Skip to content</a>
   <nav class="site-nav" aria-label="Primary navigation">
     <a class="brand" href="../../" data-transition>Bassam Anouti</a>
     <ul class="nav-links" id="site-menu">
+      <li><a href="../" aria-current="page" data-transition>Work</a></li>
       <li><a href="../../about/" data-transition>About</a></li>
-      <li><a href="../" aria-current="page" data-transition>Series</a></li>
-      <li><a href="../../exhibitions/" data-transition>Exhibitions</a></li>
       <li><a href="../../contact/" data-transition>Contact</a></li>
     </ul>
-    <a class="compare-link" href="../../../" aria-label="View comparison version one">Version one ↗</a>
+    <span class="language-slot" aria-label="Current language">EN</span>
     <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-menu"><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
   </nav>
 
   <main id="main">
-    <header class="page-hero page-hero--series">
-      <div class="series-hero-art" data-series-hero aria-hidden="true"></div>
-      <div class="page-hero-inner">
-        <div>
-          <p class="eyebrow reveal">Series 01</p>
-          <h1 class="series-title reveal">Iconic</h1>
-        </div>
-        <p class="page-lede reveal">Legendary, folkloric, mythical and historical figures staged through beauty, power and transgression.</p>
+    <header class="iconic-atmosphere-hero" data-pointer-stage aria-labelledby="iconic-title">
+      <div class="iconic-atmosphere-field" aria-hidden="true">
+        <img src="../../assets/atmosphere/iconic-semiramis-atmosphere-concept-v1.webp" alt="">
       </div>
+
+      <figure class="iconic-atmosphere-art reveal">
+        <img src="../../media/cropped/iconic-history-semiramis-and-ninyas-b.webp" alt="Ninyas with a partial view of Semiramis, an approved detail from Bassam Anouti's Iconic series" fetchpriority="high" decoding="async">
+      </figure>
+
+      <div class="iconic-atmosphere-copy">
+        <p class="iconic-atmosphere-index reveal">Series 01 · 2022</p>
+        <h1 id="iconic-title" class="reveal">Iconic</h1>
+        <p class="iconic-atmosphere-lede reveal">Legendary, folkloric, mythical and historical figures staged through beauty, power and transgression.</p>
+        <p class="iconic-atmosphere-groups reveal">History · Mythology · Folklore</p>
+        <a class="iconic-atmosphere-scroll reveal" href="#iconic-archive">Enter the series <span aria-hidden="true">↓</span></a>
+      </div>
+
+      <p class="iconic-atmosphere-caption">Semiramis and Ninyas · Detail</p>
     </header>
-    <div class="series-content" data-series-page data-content>
+    <div id="iconic-archive" class="series-content" data-series-page data-content>
       <p class="content-loading">Assembling the Iconic archive…</p>
     </div>
   </main>
 
-  <footer class="site-footer"><span>© 2026 Bassam Anouti</span><a href="../" data-transition>All series</a></footer>
+  <footer class="site-footer"><div class="footer-identity"><span>© 2026 Bassam Anouti</span><span class="language-slot" aria-label="Current language">EN</span></div><nav class="footer-links" aria-label="Secondary navigation"><a href="mailto:Anoutibassam@gmail.com">Email</a><a href="https://www.instagram.com/bassamanouti/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="../../../">Previous version ↗</a></nav></footer>
 </body>
 </html>
