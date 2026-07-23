@@ -88,11 +88,18 @@
     return image;
   };
 
+  // A url() kept in a custom property is resolved against the stylesheet that
+  // *consumes* it (site.css) rather than this document, so a document-relative
+  // path would resolve under assets/css/. Store a fully-resolved URL instead —
+  // correct from every route and under any mount point.
+  const atmosphereURL = src => new URL(src, document.baseURI).href;
+
   const imageFigure = (image, className = '', loading = 'lazy') => {
     const asset = safeImage(image);
     if (!asset) return '';
-    const assetPath = escapeHTML(contentRoot + asset.src);
-    return `<figure class="art-fragment ${className}" style="--art-source: url(${assetPath})">
+    const src = contentRoot + asset.src;
+    const assetPath = escapeHTML(src);
+    return `<figure class="art-fragment ${className}" style="--art-source: url(${escapeHTML(atmosphereURL(src))})">
       <img src="${assetPath}" alt="${escapeHTML(asset.alt || 'Artwork detail by Bassam Anouti')}" loading="${loading === 'eager' ? 'eager' : 'lazy'}" decoding="async">
     </figure>`;
   };
@@ -103,6 +110,16 @@
     return `<div class="work-media work-media--${images.length}">
       ${images.map((image, index) => imageFigure(image, `art-fragment--${index + 1}`)).join('')}
     </div>`;
+  };
+
+  // A series without its own subtitle falls back to its statement, which runs to
+  // several sentences — the line clamp then cut it mid-word ("…new races of
+  // hybrid…"). Take the opening sentence so the row reads as a deliberate
+  // standfirst, matching the series that do carry a subtitle.
+  const leadSentence = text => {
+    const value = String(text ?? '').trim();
+    const end = value.search(/[.!?](\s|$)/);
+    return end === -1 ? value : value.slice(0, end + 1);
   };
 
   const workMeta = work => [work.date, work.origin, work.dimensions]
@@ -124,7 +141,7 @@
           <div class="series-world__copy">
             <p class="kicker">${escapeHTML(series.date)} · ${works.length} works</p>
             <h2>${escapeHTML(series.title)}</h2>
-            <p>${escapeHTML(series.subtitle || series.statement)}</p>
+            <p>${escapeHTML(series.subtitle || leadSentence(series.statement))}</p>
             <span class="series-world__groups">${escapeHTML(groups)}</span>
           </div>
           <span class="series-world__enter">Enter series <span aria-hidden="true">↗</span></span>
@@ -355,11 +372,11 @@
       const specimens = (group.works || []).map((work, workIndex) => {
         const image = (work.images || []).map(safeImage).find(Boolean);
         const side = workIndex % 2 === 0 ? 'left' : 'right';
-        const source = image ? escapeHTML(contentRoot + image.src) : '';
+        const source = image ? escapeHTML(atmosphereURL(contentRoot + image.src)) : '';
         const figure = image
           ? imageFigure(image, 'specimen__fragment', groupIndex === 0 && workIndex === 0 ? 'eager' : 'lazy')
           : '';
-        return `<article class="specimen specimen--${side}" id="${escapeHTML(work.slug)}" style="--art-source: url(${source})">
+        return `<article class="specimen specimen--${side}" id="${escapeHTML(work.slug)}"${source ? ` style="--art-source: url(${source})"` : ''}>
           <div class="specimen__media">${figure}</div>
           <div class="specimen__copy">
             <p class="specimen__index">${String(workIndex + 1).padStart(2, '0')} / ${escapeHTML(group.title)}</p>

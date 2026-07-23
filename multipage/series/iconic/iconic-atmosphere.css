@@ -58,9 +58,19 @@
   z-index: -1;
   margin: 0;
   overflow: hidden;
-  /* Single soft left dissolve — solid core arrives quickly so the face reads. */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.55) 3%, #000 10%, #000 100%);
-  mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.55) 3%, #000 10%, #000 100%);
+  /* Left: single soft dissolve — solid core arrives quickly so the face reads.
+     Top: a short fade so the crown and jewellery do not run straight up under
+     the fixed nav, where WORK / ABOUT / CONTACT and EN lost all contrast against
+     pearls and gold. The fade is well above the eyes, so the portrait is
+     untouched. */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.55) 3%, #000 10%, #000 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0, rgba(0, 0, 0, 0.34) 5%, rgba(0, 0, 0, 0.8) 10%, #000 14%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.55) 3%, #000 10%, #000 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0, rgba(0, 0, 0, 0.34) 5%, rgba(0, 0, 0, 0.8) 10%, #000 14%, #000 100%);
+  mask-composite: intersect;
 }
 
 .iconic-atmosphere-art::after {
@@ -724,8 +734,15 @@
     180deg,
     transparent 0,
     rgba(var(--chapter-base-rgb), 0.4) 52%,
-    var(--chapter-base) 100%
+    rgba(var(--chapter-base-rgb), 0.94) 100%
   );
+  /* The band spanned the media box edge to edge and reached opaque chapter base,
+     so its ends cut two vertical edges and its foot a horizontal one — the hard
+     lower crop edge under Kuchisake-onna, and the same on the other two scenes
+     that precede a text-only work. Feathering the sides and stopping just short
+     of opaque lets it dissolve like the rest of the scene. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 15%, #000 85%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 15%, #000 85%, transparent 100%);
 }
 
 .iconic-scene--pending {
@@ -897,21 +914,43 @@
   transform: scale(1.18);
 }
 
+/* Scene rhythm between roughly 1060px and 1440px. `min-height: 86vh` is keyed to
+   viewport *height* while the artwork is sized by viewport *width*, so on a tall
+   mid-width window (1062x1243) an 1069px scene carried ~400px of content and
+   left ~320px of empty ground above and below — over half a screen of nothing
+   between two works, which reads as missing content rather than as rest. The cap
+   lets the inner block padding set the rhythm once the viewport grows tall,
+   while the vh term keeps the negative space on shorter windows. */
+@media (min-width: 921px) and (max-width: 1440px) {
+  .iconic-scene {
+    min-height: min(72vh, 44rem);
+    min-height: min(72svh, 44rem);
+  }
+}
+
 @media (max-width: 1200px) and (min-width: 921px) {
+  /* The copy column was 27% of the viewport — about 234px at 1062 — which broke
+     the lede into five ragged lines and wrapped the category list onto a second
+     line that collided with the artwork. Give the column a real measure and move
+     the artwork's edge across to meet it. */
   .iconic-atmosphere-art {
-    inset: 0 0 0 28%;
+    inset: 0 0 0 41%;
   }
 
   .iconic-atmosphere-art img {
-    object-position: 52% center;
+    object-position: 46% center;
   }
 
   .iconic-atmosphere-copy {
-    width: min(32rem, calc(27% - var(--gutter)));
+    width: min(32rem, calc(40% - var(--gutter)));
   }
 
   .iconic-atmosphere-copy h1 {
-    font-size: clamp(4.6rem, 8.2vw, 7.8rem);
+    font-size: clamp(4.2rem, 7.4vw, 7.8rem);
+  }
+
+  .iconic-atmosphere-groups {
+    max-width: 22rem;
   }
 }
 
@@ -969,30 +1008,45 @@
     display: none;
   }
 
-  /* Compact chapter navigator — pinned into the top chrome zone directly beneath
-     the fixed nav, so it never overlays the artwork or its description (both of
-     which sit lower in each scene). The nav is always in its scrolled 4.5rem
-     state by the time any chapter is in view. */
+  /* Chapter navigator, docked as a second chrome row flush beneath the fixed
+     nav. It used to float as a translucent pill at a fixed y, which the earlier
+     note assumed would clear the work — it does not: the rail is on screen for
+     nearly the whole archive, so scene titles, section labels, dimension lines,
+     captions and the "N works" count were each chopped through the middle as
+     they scrolled past it. Moving the pill elsewhere in the viewport only trades
+     one set of collisions for another, so instead it now occupies header space
+     full-bleed and opaque: content passes behind the header the way it already
+     passes behind the nav, rather than under a chip lying on the artwork. The
+     nav is always in its scrolled 4.5rem state by the time a chapter is in
+     view. Scroll offsets below keep anchored landings clear of the whole band. */
   .chapter-rail {
-    left: 50%;
-    right: auto;
-    top: calc(4.5rem + 0.5rem);
+    left: 0;
+    right: 0;
+    top: 4.5rem;
     bottom: auto;
-    transform: translateX(-50%);
-    width: max-content;
-    max-width: calc(100vw - 1.4rem);
+    transform: none;
+    width: auto;
+    max-width: none;
   }
 
   .chapter-rail ol {
     grid-auto-flow: column;
+    justify-content: center;
     gap: 0;
     align-items: center;
-    padding: 0.4rem;
-    border-radius: 999px;
-    background: rgba(170, 160, 152, 0.86);
+    padding: 0.5rem var(--gutter);
+    border-bottom: 1px solid rgba(41, 37, 31, 0.12);
+    background: rgba(170, 160, 152, 0.95);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
-    box-shadow: 0 0.5rem 1.4rem rgba(41, 37, 31, 0.16);
+  }
+
+  /* Nav (4.5rem) plus the docked rail, so a tapped chapter or work lands below
+     the chrome instead of behind it. */
+  #iconic-archive,
+  .page-series--atmosphere .plate-chapter,
+  .iconic-scene {
+    scroll-margin-top: 7.2rem;
   }
 
   .chapter-rail ol::before {

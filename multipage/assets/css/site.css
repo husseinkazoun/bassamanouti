@@ -21,6 +21,7 @@ html {
   background: var(--ink);
   color-scheme: light;
   scroll-behavior: smooth;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -28,7 +29,13 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden;
+  /* `clip` rather than `hidden`: both stop the atmosphere layers' soft bleed
+     from opening a horizontal scrollbar, but `hidden` leaves the overflow
+     scrollable, so the document still measured wider than the viewport (the
+     series-index halos overran the 20px mobile gutter by 18px). `clip` has no
+     scrollable region and creates no scroll container, so sticky descendants
+     keep resolving against the viewport. */
+  overflow-x: clip;
   background:
     radial-gradient(circle at 82% 12%, rgba(248, 241, 229, 0.38), transparent 34rem),
     var(--ink);
@@ -586,16 +593,26 @@ i { font-style: normal; }
   text-transform: uppercase;
 }
 
+/* Give the biography a viewport-width reference that excludes the vertical
+   scrollbar. Plain vw includes that scrollbar, leaving a small horizontal
+   overrun on long pages. */
+.page-about main {
+  container-type: inline-size;
+}
+
+/* Full-bleed wash behind the biography. The pull-back to the viewport edge is
+   done with `left`, not `translateX(-50%)`: this figure also carries .reveal,
+   whose `.reveal.is-visible { transform: translateY(0) }` is more specific and
+   would wipe a transform-based offset. */
 .about-fragment {
   position: absolute;
   inset: clamp(1.5rem, 3vw, 3rem) auto;
-  left: 50%;
+  left: calc(50% - 50cqw);
   z-index: 0;
-  width: 100vw;
+  width: 100cqw;
   margin: 0;
   overflow: hidden;
   background: transparent;
-  transform: translateX(-50%);
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 8%, #000 90%, transparent 100%);
   mask-image: linear-gradient(180deg, transparent 0, #000 8%, #000 90%, transparent 100%);
 }
@@ -784,11 +801,23 @@ i { font-style: normal; }
     gap: 2.2rem;
     background: rgba(184, 177, 167, 0.98);
     opacity: 0;
+    /* visibility:hidden also takes the links out of the keyboard tab order while
+       the menu is closed, so focus never lands on an invisible control
+       (WCAG 2.4.7) — matching how .chapter-rail already handles this. The 0s
+       delay holds the flip until the fade-out has finished. */
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 300ms ease;
+    transition: opacity 300ms ease, visibility 0s linear 300ms;
   }
   .nav-links a { font-size: 0.8rem; }
-  .site-nav.menu-open .nav-links { opacity: 1; pointer-events: auto; }
+  /* No delay opening, so the panel is focusable the moment site.js moves focus
+     to the first link. */
+  .site-nav.menu-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 300ms ease, visibility 0s;
+  }
   .site-nav.menu-open .menu-button span:first-child { transform: translateY(4px) rotate(45deg); }
   .site-nav.menu-open .menu-button span:last-child { transform: translateY(-4px) rotate(-45deg); }
   .hero-grid,
@@ -903,6 +932,31 @@ i { font-style: normal; }
   opacity: 0.94;
   filter: saturate(0.96) contrast(0.98);
   animation: heroBreath 18s ease-in-out infinite alternate;
+}
+
+/* Mid widths give the media a tall, narrow window, so `object-fit: cover` crops
+   hard horizontally and sliced the right-hand figure's face at the viewport
+   edge. Widening the band and easing the focal point back keeps both heads
+   whole, and the title still has the left third to itself. */
+@media (min-width: 921px) and (max-width: 1200px) {
+  .home-hero-media {
+    inset: 0 0 0 42%;
+  }
+
+  /* The window shows ~52% of the image width while the two heads together span
+     ~47%, so the focal point has to be placed deliberately: 65% is the only
+     narrow band that keeps both faces whole, trimming headdress and shoulder
+     rather than either head. */
+  .home-hero-media img {
+    object-position: 65% 18%;
+  }
+
+  .home-hero-media::after {
+    background:
+      linear-gradient(180deg, rgba(184, 177, 167, 0.42) 0, transparent 15%),
+      linear-gradient(90deg, var(--ink) 0, rgba(184, 177, 167, 0.82) 11%, rgba(184, 177, 167, 0.22) 33%, transparent 52%),
+      linear-gradient(0deg, rgba(184, 177, 167, 0.64) 0, transparent 25%);
+  }
 }
 
 .hero-roleline {
@@ -1075,12 +1129,41 @@ i { font-style: normal; }
 
 .series-world__media .art-fragment { height: 100%; }
 
+/* These were clip-path quadrilaterals, which cut hard straight edges and gave
+   each world a visible angular boundary. A feathered mask keeps the same subtle
+   tilt in the composition while letting the artwork dissolve into the ground.
+   The slight left/right asymmetry keeps the two worlds from mirroring. */
 .series-world--iconic .series-world__media {
-  clip-path: polygon(0 7%, 95% 0, 100% 90%, 8% 100%);
+  -webkit-mask-image:
+    linear-gradient(96deg, transparent 0, #000 11%, #000 90%, transparent 100%),
+    linear-gradient(184deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(96deg, transparent 0, #000 11%, #000 90%, transparent 100%),
+    linear-gradient(184deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-composite: intersect;
 }
 
-.series-world--bestiaire .series-world__media {
-  clip-path: polygon(7% 0, 100% 6%, 92% 100%, 0 94%);
+.series-world--bestiaire-mythique .series-world__media {
+  -webkit-mask-image:
+    linear-gradient(84deg, transparent 0, #000 11%, #000 90%, transparent 100%),
+    linear-gradient(176deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(84deg, transparent 0, #000 11%, #000 90%, transparent 100%),
+    linear-gradient(176deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* The container is a tall column while the crop is landscape, so `cover`
+   defaulted to the middle of the frame — which on Kinnara is an arm and a wing,
+   an anonymous fragment. Anchor each world on its figure's head instead. */
+.series-world--iconic .art-fragment img {
+  object-position: 50% 34%;
+}
+
+.series-world--bestiaire-mythique .art-fragment img {
+  object-position: 21% 30%;
 }
 
 .series-world__number {
@@ -1971,12 +2054,18 @@ i { font-style: normal; }
     padding-bottom: clamp(5rem, 11vh, 7rem);
   }
   .home-hero-media { inset: 0; }
-  .home-hero-media img { object-position: 58% 18%; opacity: 0.9; }
+  /* Both heads sit in the upper half, so anchor there and let the scrim below
+     carry the type rather than fading the whole artwork. */
+  .home-hero-media img { object-position: 56% 14%; opacity: 0.97; }
+  /* Previously a 0.94 → 0.7 wash ran across the whole width, which bleached both
+     figures to carry type that only occupies the lower half. The scrim is now
+     bottom-weighted: the heads stay legible up top, the type sits on quiet
+     ground below. */
   .home-hero-media::after {
     background:
-      linear-gradient(180deg, rgba(184, 177, 167, 0.6) 0, transparent 14%),
-      linear-gradient(90deg, rgba(184, 177, 167, 0.94) 0, rgba(184, 177, 167, 0.7) 44%, rgba(184, 177, 167, 0.1) 100%),
-      linear-gradient(0deg, var(--ink) 4%, rgba(184, 177, 167, 0.88) 35%, transparent 72%);
+      linear-gradient(180deg, rgba(184, 177, 167, 0.55) 0, transparent 12%),
+      linear-gradient(0deg, var(--ink) 2%, rgba(184, 177, 167, 0.9) 30%, rgba(184, 177, 167, 0.44) 49%, transparent 67%),
+      linear-gradient(90deg, rgba(184, 177, 167, 0.36) 0, rgba(184, 177, 167, 0.1) 38%, transparent 60%);
   }
   .hero-spacer { display: none; }
   .hero-copy { align-self: end; max-width: 38rem; }
@@ -2220,15 +2309,22 @@ i { font-style: normal; }
   position: absolute;
   inset: 0;
   z-index: 1;
+  /* A graduated quiet zone under the title and category line — not a card: it
+     never reaches a flat plateau and has no edge of its own. */
+  /* These crops are face-filling edge to edge, so there is no naturally quiet
+     zone to drop type into: the quiet is built with graduated shading instead.
+     It stays a gradient — no plateau, no edge of its own — so it reads as
+     atmosphere rather than a card, and the centre of the artwork is untouched.
+     The right-hand ramp does the same job for "Enter work". */
   background:
-    linear-gradient(90deg, rgba(184, 177, 167, 0.56) 0, rgba(184, 177, 167, 0.16) 30%, rgba(184, 177, 167, 0.06) 63%, rgba(184, 177, 167, 0.4) 100%),
+    linear-gradient(90deg, rgba(184, 177, 167, 0.95) 0, rgba(184, 177, 167, 0.82) 17%, rgba(184, 177, 167, 0.46) 34%, rgba(184, 177, 167, 0.08) 58%, rgba(184, 177, 167, 0.24) 82%, rgba(184, 177, 167, 0.6) 100%),
     linear-gradient(180deg, var(--ink) 0, transparent 11%, transparent 88%, var(--ink) 100%);
   pointer-events: none;
 }
 
 .page-home .gateway--bestiaire::after {
   background:
-    linear-gradient(90deg, rgba(184, 177, 167, 0.58) 0, rgba(184, 177, 167, 0.18) 31%, rgba(184, 177, 167, 0.04) 61%, rgba(184, 177, 167, 0.28) 100%),
+    linear-gradient(90deg, rgba(184, 177, 167, 0.95) 0, rgba(184, 177, 167, 0.84) 18%, rgba(184, 177, 167, 0.48) 35%, rgba(184, 177, 167, 0.07) 60%, rgba(184, 177, 167, 0.22) 83%, rgba(184, 177, 167, 0.58) 100%),
     linear-gradient(180deg, var(--ink) 0, transparent 11%, transparent 88%, var(--ink) 100%);
 }
 
@@ -2251,6 +2347,18 @@ i { font-style: normal; }
 .page-home .gateway--bestiaire .gateway-media {
   grid-column: auto;
   grid-row: auto;
+}
+
+/* Declared here rather than inline on the figure: a url() held in a custom
+   property resolves against the stylesheet that consumes it, so it has to be
+   written relative to this file. Keep each path in step with the matching
+   <img src> in index.html — they are the same artwork. */
+.page-home .gateway--iconic .gateway-media {
+  --gateway-art: url('../../media/cropped/iconic-history-agrippina-and-nero.webp');
+}
+
+.page-home .gateway--bestiaire .gateway-media {
+  --gateway-art: url('../../media/cropped/bestiaire-hybrides-rd-04.webp');
 }
 
 .page-home .gateway-media::before {
@@ -2286,15 +2394,32 @@ i { font-style: normal; }
   opacity: 0.9;
   transform: scale(1.035);
   filter: saturate(0.92) contrast(1.025);
-  -webkit-mask-image: radial-gradient(ellipse 98% 92% at center, #000 63%, rgba(0, 0, 0, 0.88) 81%, transparent 100%);
-  mask-image: radial-gradient(ellipse 98% 92% at center, #000 63%, rgba(0, 0, 0, 0.88) 81%, transparent 100%);
+  /* The radial alone only softened the corners, so the left and right sides
+     stayed as straight edges and the band read as a rectangular card laid on the
+     page — most visibly on hover, where the image scales inside its clipped box.
+     The added horizontal pass feathers those sides into the ground; the ::after
+     wash already dissolves top and bottom. */
+  -webkit-mask-image:
+    radial-gradient(ellipse 98% 92% at center, #000 63%, rgba(0, 0, 0, 0.88) 81%, transparent 100%),
+    linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(ellipse 98% 92% at center, #000 63%, rgba(0, 0, 0, 0.88) 81%, transparent 100%),
+    linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+  mask-composite: intersect;
   transition: transform 900ms cubic-bezier(.2,.7,.2,1), opacity 500ms ease, filter 500ms ease;
 }
 
+/* Focal points chosen so the faces sit clear of the title and category line,
+   which occupy the left third of the band. */
+.page-home .gateway--iconic .gateway-media img {
+  object-position: 74% center;
+}
+
 .page-home .gateway--bestiaire .gateway-media img {
-  object-position: 56% center;
+  object-position: 63% center;
   opacity: 0.93;
-  transform: scale(1.07);
+  transform: scale(1.05);
 }
 
 .page-home .gateway-index,
@@ -2415,19 +2540,25 @@ i { font-style: normal; }
 
 .page-contact .contact-fragment::after {
   background:
-    linear-gradient(90deg, var(--ink) 0, rgba(184, 177, 167, 0.96) 26%, rgba(184, 177, 167, 0.68) 54%, rgba(184, 177, 167, 0.08) 88%),
+    linear-gradient(90deg, rgba(184, 177, 167, 0.7) 0, rgba(184, 177, 167, 0.3) 20%, rgba(184, 177, 167, 0.08) 46%, rgba(184, 177, 167, 0.5) 74%, rgba(184, 177, 167, 0.82) 100%),
     linear-gradient(180deg, var(--ink) 0, transparent 14%, transparent 80%, var(--ink) 100%);
 }
 
+/* Hold the figures in the left and centre, where the display type can sit
+   alongside them, and keep the right third as quiet ground for the enquiries
+   column at every width — rather than letting the crop drift so that a face
+   lands under the text at middle desktop sizes. */
 .page-contact .contact-fragment img {
-  object-position: 61% center;
+  object-position: 44% 46%;
   transform: scale(1.045);
 }
 
 .page-contact .contact-inner > div:last-child {
-  background: radial-gradient(ellipse at center, rgba(184, 177, 167, 0.9) 0 38%, rgba(184, 177, 167, 0.62) 61%, transparent 84%);
-  -webkit-backdrop-filter: blur(7px);
-  backdrop-filter: blur(7px);
+  /* Was a blurred radial panel, which read as a faintly-edged glass card sitting
+     on the artwork. The readability now comes from the fragment's own right-hand
+     ramp, so this only needs to be the softest possible lift, with no blur and
+     no perceptible boundary. */
+  background: radial-gradient(ellipse 130% 145% at 52% 50%, rgba(184, 177, 167, 0.5) 0 40%, rgba(184, 177, 167, 0.22) 70%, transparent 100%);
 }
 
 @media (max-width: 900px) {
@@ -2440,6 +2571,18 @@ i { font-style: normal; }
   .page-series-index .series-world__media .art-fragment img {
     -webkit-mask-image: radial-gradient(ellipse at center, #000 38%, rgba(0, 0, 0, 0.78) 59%, transparent 88%);
     mask-image: radial-gradient(ellipse at center, #000 38%, rgba(0, 0, 0, 0.78) 59%, transparent 88%);
+  }
+
+  /* The halo's -8% horizontal bleed is wider than the 1.25rem mobile gutter, so
+     it pushed 18px past the viewport and expanded the mobile layout viewport.
+     Keep the vertical bloom; rein the sides in to fit the gutter. The layers are
+     blurred and radially masked, so the horizontal reach is barely legible. */
+  .page-series-index .series-world__media .art-fragment::before {
+    inset: -8% -3%;
+  }
+
+  .page-series-index .series-world__media .art-fragment::after {
+    inset: -3% -2%;
   }
 
   .page-home .gateway,
